@@ -1,0 +1,183 @@
+\documentclass[letterpaper]{article}
+\pagestyle{empty}
+\textheight=8in
+\textwidth=6in
+\hoffset=-.5in
+\newcommand{\R}{{\mathbb R}}
+%\input C:/W-proc/newcomm
+
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\begin{document}
+ \centerline{McGill University}
+ \centerline{Math 325A: Differential Equations}
+
+ \bk
+ \centerline{\bf \large{ LECTURE 1: INTRODUCTION} }
+ \vskip .1in
+ \centerline{(Text: Sections 1.1, 1.2)} \vskip .1in
+
+\section{Definitions and Basic Concepts}
+
+\subsection{Ordinary Differential Equation (ODE)} An equation
+involving the derivatives of an unknown function $y$ of a single
+variable $x$ over an interval $ x\in (I)$.
+
+\subsection{Solution} Any function $y=f(x)$ which
+satisfies this equation over the interval $(I)$ is called a
+solution of the ODE.
+
+For example, $y=e^{2x}$ is a solution of the ODE
+$$y'=2y$$
+
+and $y=\sin(x^2)$ is a solution of the ODE
+$$xy''-y'+4x^3y=0.$$
+
+\subsection{Order  $n$ of the DE} An ODE is said to be order $n$,
+ if $y^{(n)}$ is the highest order
+derivative occurring in the equation. The simplest first order ODE
+is $y'=g(x)$.
+
+ The most general form of an $n$-th order ODE is
+$$F(x,y,y',\ldots,y^{(n)})=0$$
+with $F$ a function of $n+2$ variables $x,u_0,u_1,\ldots,u_n$. The
+equations
+$$ xy''+y=x^3,\quad y'+y^2=0,\quad y'''+2y'+y=0$$
+are examples of ODE's of second order, first order and third order
+respectively with respectively
+$$F(x,u_0,u_1,u_2)=xu_2+u_0-x^3 ,\ \
+ F(x,u_0,u_1)=u_1+u_0^2,\ \ F(x,u_0,u_1,u_2,u_3)=u_3+2u_1+u_0.$$
+
+\subsection{Linear Equation:} If the function $F$ is linear in the
+variables $u_0,u_1,\ldots,u_n$ the ODE is
+ said to be {\bf linear}. If, in addition, $F$ is homogeneous then the ODE is said
+to be homogeneous. The first of the above examples above is linear
+are linear, the second is non-linear and the third is linear and
+homogeneous. The general $n$-th order linear ODE can be written
+$$
+a_n(x)\frac{d^ny}{dx^n}+a_{n-1}(x)\frac{d^{n-1}y}{dx^{n-1}}+\cdots+
+a_1(x)\frac{dy}{dx}+a_0(x)y=b(x).$$
+
+\subsection{Homogeneous Linear Equation:}
+ The linear DE is homogeneous, if and only if $b(x)\equiv 0$. Linear
+homogeneous equations have the important property that linear
+combinations of solutions are also solutions. In other words, if
+$y_1,y_2,\ldots,y_m$ are solutions and $c_1,c_2,\ldots,c_m$ are
+constants then
+$$c_1y_1+c_2y_2+\cdots+c_my_m$$
+is also a solution.
+
+\subsection{Partial Differential Equation (PDE)} An
+equation involving the partial derivatives of a function of more
+than one variable is called PED. The concepts of linearity and
+homogeneity can be extended to PDE's. The general second order
+linear PDE in two variables $x,y$ is
+$$
+a(x,y)\frac{\partial^2u}{\partial
+x^2}+b(x,y)\frac{\partial^2u}{\partial x\partial
+y}+c(x,y)\frac{\partial^2u}{\partial y^2}+d(x,y)\frac{\partial
+u}{\partial x}+e(x,y)\frac{\partial u}{\partial y}+f(x,y)u=g(x,y).
+$$
+Laplace's equation
+$$\frac{\partial^2 u}{{\partial x}^2}+
+\frac{\partial^2 u}{{\partial y}^2}=0$$ is a linear, homogeneous
+PDE of order $2$. The functions $u=\log(x^2+y^2)$, $u=xy$,
+$u=x^2-y^2$ are examples of solutions of Laplace's equation. We
+will not study PDE's systematically in this course.
+
+\subsection{General Solution of a Linear Differential Equation} It
+represents the set of all solutions, i.e., the set of all
+functions which satisfy the equation in the interval (I).
+ For
+example, the general solution of the differential equation
+$y'=3x^2$ is $y=x^3+C$ where $C$ is an arbitrary constant. The
+constant $C$ is the value of $y$ at $x=0$. This {\bf initial
+condition} completely determines the solution. More generally, one
+easily shows that given $a,b$ there is a unique solution $y$ of
+the differential equation with $y(a)=b$. Geometrically, this means
+that the one-parameter family of curves $y=x^2 + C$ do not
+intersect one another and they fill up the plane $\R^2$.
+
+\subsection{A System of ODE's}
+$$
+\barray
+ y_1'&=G_1(x,y_1,y_2,\ldots,y_n)\\
+ y_2'&=G_2(x,y_1,y_2,\ldots,y_n)\\
+ \vdots\\
+  y_n'&=G_n(x,y_1,y_2,\ldots,y_n)
+\earray
+$$
+  An $n$-th order ODE of the form
+$y^{(n)}=G(x,y,y',\ldots,y^{n-1})$ can be transformed in the form
+of the system of first order DE's. If we introduce dependant
+variables $y_1=y,y_2=y',\ldots ,y_n=y^{n-1}$ we obtain the
+equivalent system of first order equations
+\begin{align*}
+y_1'&=y_2,\\ y_2'&=y_3,\\ \vdots& \\y_n'&=G(x,y_1,y_2,\ldots,y_n).
+\end{align*}
+For example, the ODE $y''=y$ is equivalent to the system
+\begin{align*}
+y_1'&=y_2,\\ y_2'&=y_1.
+\end{align*}
+
+ In this way the study of $n$-th order equations can be
+reduced to the study of systems of first order equations. Some
+times, one called the latter as the {\bf normal form} of the
+$n$-th order ODE.
+ Systems of equations arise in the
+study of the motion of particles. For example, if $P(x,y)$ is the
+position of a particle of mass $m$ at time $t$, moving in a plane
+under the action of the force field $(f(x,y),g(x,y)$, we have
+\begin{align*}
+m\frac{d^2x}{dt^2}&= f(x,y),\\ m\frac{d^2y}{dt^2}&=g(x,y).
+\end{align*}
+This is a second order system.
+
+The general first order ODE in normal form is
+$$
+y'=F(x,y).
+$$
+If $F$ and $\frac{\partial F}{\partial y}$ are continuous one can
+show that, given $a,b$, there is a unique solution with $y(a)=b$.
+Describing this solution is not an easy task and there are a
+variety of ways to do this. The dependence of the solution on
+initial conditions is also an important question as the initial
+values may be only known approximately.
+
+The non-linear ODE $yy'=4x$ is not in normal form but can be
+brought to normal form
+$$
+y'=\frac{4x}{y}.
+$$
+by dividing both sides by $y$.
+
+
+\section{The Approaches of Finding Solutions of ODE}
+
+ \subsection{Analytical Approaches}
+ \bitem
+ \item
+ Analytical solution methods: finding the exact form of solutions;
+ \item
+ Geometrical methods: finding the qualitative behavior of
+ solutions;
+ \item
+ Asymptotic methods: finding the asymptotic form of the solution,
+ which gives good approximation of the exact solution.
+\eitem
+
+ \subsection{ Numerical Approaches}
+ \bitem
+\item
+Numerical algorithms --- numerical methods;
+\item
+Symbolic manipulators --- Maple, MATHEMATICA, MacSyma.
+
+ \eitem
+
+
+This course mainly discuss the analytical approaches and mainly on
+analytical solution methods.
+
+\end{document}

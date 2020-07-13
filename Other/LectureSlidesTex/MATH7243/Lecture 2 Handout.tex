@@ -1,0 +1,677 @@
+ \documentclass[10pt,handout]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+\usetikzlibrary{arrows.meta, positioning, quotes}
+\usepackage{enumitem}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\title{Machine Learning I}
+\subtitle{Lecture 2 - Matrix Differentiation and Optimization}
+% \date{\today}
+\date{}
+\author{Nathaniel Bade}
+\institute{Northeastern University Department of Mathematics}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Table of contents}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+
+
+
+
+\section{Bias-Variance Trade Off}
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1KNN2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+Last time we discussed two methods of performing binary classification: the first was to label each point by the vote of its $k$-nearest neighbors. The second was to perform linear regression on $Y = P(y_i = \text{Orange})$, that is the probability that the $i$'th training point is orange. 
+ \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1BinaryClass3.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+Last time we discussed two methods of performing binary classification: the first was to label each point by the vote of its $k$-nearest neighbors. The second was to perform linear regression on $Y = P(y_i = \text{Orange})$, that is the probability that the $i$'th training point is orange. 
+ \end{minipage}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1KNN2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+There is another disadvantage to using 1 nearest neighbors: it is very sensitive to the choice of training data.
+ \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1KNN2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+Taking two samples of the training data, 1NN produces two drastically different regressions, especially in the region with the most points.
+ \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1NNVar.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+Taking two samples of the training data, 1NN produces two drastically different regressions, especially in the region with the most points.
+ \end{minipage}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1NNVar2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+Taking two samples of the training data, 1NN produces two drastically different regressions, especially in the region with the most points.
+ \end{minipage}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1NNVar2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+This sensitivity to training data is known as the variance of the model.
+ \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1BinaryClass3.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+By contrast, if we take the same half of the training data and recompute the linear classifier, the change in the fit is very low, especially in the region with the most data points. 
+ \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1LRVar.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+By contrast, if we take the same half of the training data and recompute the linear classifier, the change in the fit is very low, especially in the region with the most data points. 
+ \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1LRVar2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+By contrast, if we take the same half of the training data and recompute the linear classifier, the change in the fit is very low, especially in the region with the most data points. 
+ \end{minipage}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1LRVar.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+This contrast between the two algorithms is know as the \textbf{bias-variance trade off}. \pause
+
+For a class of models, the \textbf{bias} roughly is the expected error of the ``best" classifier in the model class given a random set of training data.\pause
+
+The \textbf{variance} is roughly the sensitivity of the model to the training data. 
+ \end{minipage}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1BiasVarTradeoff1.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+The idea is that the total error $\text{Err}$ can be split into three parts:
+$$
+\text{Err} = (\text{Bias})^2 + \text{Var} + \text{Irreducible Error}
+$$\pause
+The best fit lies somewhere in between the extreme ends.
+ \end{minipage}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}[fragile]{Bias-Variance Trade Off}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1BiasVarTradeoff2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+The idea is that the total error $\text{Err}$ can be split into three parts:
+$$
+\text{Err} = (\text{Bias})^2 + \text{Var} + \text{Irreducible Error}
+$$
+The best fit lies somewhere in between the extreme ends.
+\pause
+We will return and make this rigorous at the end of the semester. 
+ \end{minipage}
+\end{frame}
+
+
+
+
+
+\section{The Curse of Dimensionality}
+
+
+\begin{frame}[fragile]{The Curse of Dimensionality}
+Of our two models, we found that the linear model was stable, but very biased. On the other, the $k$-nearest neighbors is unstable but much less biased. Since stability can be overcome with a large enough data set, why don't we always use $k$-nearest neighbors?\pause
+
+The first reason is that for a sufficient amount of data of high enough dimension it may be computationally hard to \emph{find} the $k$-nearest neighbors, but in practice this is usually surmountable. The real reason is that geometry in higher dimensions often behaves counter-intuitively, and as the dimension of our input vector gets large,the meaning of ``nearest'' becomes less clear. 
+\end{frame}
+
+
+
+\begin{frame}[fragile]{The Curse of Dimensionality}
+   \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1Scaling1.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+\textbf{Example:} Assume a $p$ dimensional input with uniformly distributed datapoints in the unit cube. For a cubical neighbor around $x_i$ to capture a proportion $r$ of the data points, it will have to cover a proportion $r$ of the volume. For edges of length $e_r$, this means $(e_r)^p = r$, or $e = r^{\frac1p}$.
+ \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{The Curse of Dimensionality}
+   \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1Scaling1.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.3\textheight][t]{\textwidth}
+In 10 dimensions $e_{.01} = .63$, so capturing 1\% of the data requires covering over half the range for each input. It's not clear that this is now a ``local" average we're taking.  
+ \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{The Curse of Dimensionality}
+   \begin{minipage}[t][0.7\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.7\textheight]{L1Dim1.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.3\textheight][t]{\textwidth}
+Indeed, we see that as $p$ increases, length of a side required to probe the same fraction of volume increases drastically. 
+ \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{The Curse of Dimensionality}
+   \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1Scaling1.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.3\textheight][t]{\textwidth}
+What about 1000 dimensions (still small for something like photo classification).  Here, $e_{.01} = .9954$ so we would expect a cube of with side lengths $.9954$ to only capture 1\% of data points uniformly distributed in a unit cube. 
+ \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{The Curse of Dimensionality}
+   \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1BinaryClass7.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.3\textheight][t]{\textwidth}
+In low dimensions, objects tend to be clustered towards the center of the range. In high dimensions, the generic position for uniformly distributed data point is close to the boundary. 
+ \end{minipage}
+\end{frame}
+
+
+
+
+
+\begin{frame}[fragile]{The Curse of Dimensionality}
+For another face of the curse, lets consider the relative volume of the unit sphere in high dimensions. In $2k$ dimensional space, the volume of the sphere of radius $r$ is
+$$
+V(r) = \frac{\pi^k}{k!}r^{2k}\,.
+$$\pause
+For $r=1$ and $k=500$, we have $V(r) \approx 3.1\times 10^{-886}$\,. So the largest sphere contained in the domain contains almost 0\% of the data points. \pause
+
+Inverting the formula, we find we can capture 1\% of the data points in a sphere of radius 7.6, but this means that even capturing 1\% of our data requires looking at a distance far outside of our domain. 
+\end{frame}
+
+
+
+\begin{frame}[fragile]{The Curse of Dimensionality}
+   \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[width=0.5\textwidth]{L1StatsModel2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+It would be ridiculous to extrapolate our result from the height dataset out to $h = 20$, $k$-nearest neighbors in high dimensions would be theoretically probing that same space. 
+ \end{minipage}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{The Curse of Dimensionality}
+   \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[width=0.9\textwidth]{L1Scaling2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+A final example is that given two random data points in $[0,1]^2$, the distance between datapoints is 
+$$
+\sqrt{\Delta X_1^2 + \Delta X_2^2}\,.
+$$
+In 3d, this is at least as large:
+$$
+\sqrt{\Delta X_1^2 + \Delta X_2^2 + \Delta X_3^2}\,.
+$$
+ \end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{The Curse of Dimensionality}
+   \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[width=0.9\textwidth]{L1Scaling2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+By contrast, the distance to a hyperplane remains unchanged. Practically, this means that as the dimension rises, fewer and fewer points will ``close,'' possibly violating the $k$-NN assumption that similar points share similar labels. 
+ \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{The Curse of Dimensionality}
+   \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[width=0.9\textwidth]{L1Scaling2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+As distances become large in high dimensional space the relative distances to a hyperplane becomes small. This can be seen as an advantage of linear classifiers since points can be meaning distinct, but it also may be a disadvantage, since a small perturbation can lead to a relatively large change in the classification. 
+ \end{minipage}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{The Curse of Dimensionality}
+   \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[width=0.9\textwidth]{L1Scaling2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+That said, by relying on rigid assumptions, the linear model has very little bias and is quite stable even for large dimensional data sets, whereas $k$-nearest neighbors is much less stable. But if the assumptions are wrong all conclusions may be incorrect. We will see many examples between the extremes of $k$-NN and linear models.  
+ \end{minipage}
+\end{frame}
+
+
+
+
+\section{Matrix Differentiation} %ML vs Statistics vs Probabiltiy
+
+\begin{frame}[fragile]{Linear Regression}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1Regression2.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+Last time, we discuss the problem of fitting a linear function to a set of datapoints with domain $X\in \mathbb{R}^p$ and labels $Y\in \mathbb{R}$. We noted that by redefining $X = [X_1, \ldots, X_p]$ to $X = [1, X_1, \ldots, X_p]$, the linear function can be compactly written:
+$$
+Y = \beta_0 + \beta_1 X_1 + \ldots + \beta_p X_p = \beta^TX. 
+$$
+  \end{minipage}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Linear Regression}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1Regression4.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+We can then fit a linear function to a set of datapoint with domain $\mathbb{R}^P$ and labels $\mathbb{R}$ by finding $\beta$ that minimizes the residual sum squared
+$$
+\text{RSS}(\beta) = \sum_{i=1}^N(y_i - \beta^T x_i)^2\,.
+$$
+  \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{Linear Regression}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1Regression4.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+We then showed that we could rewrite the RSS as a matrix multiplication, and noted that in matrix form the formula holds for $Y\in \mathbb{R}^k$, $\beta$ a $p\times K$ matrix:
+$$
+\text{RSS}(\beta) = \sum_{i=1}^N(y_i - \beta^T x_i)^2 = (\mathbf{y} - \mathbf{X}\beta)^T(\mathbf{y} - \mathbf{X}\beta)
+$$
+  \end{minipage}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Linear Regression}
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+    \centering
+     \includegraphics[height=0.5\textheight]{L1Regression4.png}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[t][0.5\textheight][t]{\textwidth}
+Finding an expression for $\beta$ that minimizes $\text{RSS}(\beta)$ will solve a huge family of regression problems. Using matrix derivatives we can show the solution takes on a particularly nice form:
+$$
+\frac{\partial \text{RSS}(\beta)}{\partial \beta} = -2\mathbf{X}^T(\mathbf{y} - \mathbf{X}\beta) = 0
+$$
+  \end{minipage}
+\end{frame}
+
+
+\begin{frame}[fragile]{Matrix Derivatives}
+There are two formats for matrix derivatives. For $Y\in \mathbb{R}^m$, $X\in \mathbb{R}^n$,\vspace{2em}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+Numerator Layout Notation:
+$$\frac{\partial Y}{\partial X} = 
+\left[ 
+\begin{matrix}
+\frac{\partial Y_1}{\partial X_1} & \ldots & \frac{\partial Y_1}{\partial X_n} \\
+\vdots& \ddots &\vdots \\
+\frac{\partial Y_m}{\partial X_1}&\ldots&\frac{\partial Y_m}{\partial X_n} 
+\end{matrix}
+\right]$$
+For $Y\in \mathbb{R}$,
+$$\nabla Y =\frac{\partial Y}{\partial X} = 
+\left[ 
+\begin{matrix}
+\frac{\partial Y_1}{\partial X_1}& \ldots & \frac{\partial Y_1}{\partial X_n}
+\end{matrix}
+\right]\,.$$
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+Denominator Layout Notation:
+$$\frac{\partial Y}{\partial X} = 
+\left[ 
+\begin{matrix}
+\frac{\partial Y_1}{\partial X_1} & \ldots & \frac{\partial Y_m}{\partial X_1} \\
+\vdots& \ddots &\vdots \\
+\frac{\partial Y_1}{\partial X_n}&\ldots &\frac{\partial Y_m}{\partial X_n} 
+\end{matrix}
+\right]\,.$$
+For $Y\in \mathbb{R}$,
+$$\nabla Y = \frac{\partial Y}{\partial X} = 
+\left[ 
+\begin{matrix}
+\frac{\partial Y_1}{\partial X_1}& \ldots & \frac{\partial Y_1}{\partial X_n}
+\end{matrix}
+\right]^T\,.$$
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Matrix Derivatives}
+Similarly, for a scalar $Y\in \mathbb{R}$ and a matrix $X\in \mathbb{R}^{m\times n}$,\vspace{2em}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+Numerator Layout Notation:
+$$\frac{\partial Y}{\partial X} = 
+\left[ 
+\begin{matrix}
+\frac{\partial y}{\partial x_{11}} & \ldots & \frac{\partial y}{\partial x_{m1}} \\
+\vdots& \ddots &\vdots \\
+\frac{\partial y}{\partial x_{1n}}&\ldots&\frac{\partial y}{\partial x_{mn}} 
+\end{matrix}
+\right]$$
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+Denominator Layout Notation:
+$$\frac{\partial Y}{\partial X} = 
+\left[ 
+\begin{matrix}
+\frac{\partial y}{\partial x_{11}} & \ldots & \frac{\partial y}{\partial x_{1n}} \\
+\vdots& \ddots &\vdots \\
+\frac{\partial y}{\partial x_{m1}}&\ldots&\frac{\partial y}{\partial x_{mn}} 
+\end{matrix}
+\right]\,.$$
+\end{column}
+\end{columns}\vspace{2em}
+Both notations are use, often without specifying. Sometime authors even switch back and forth so always check the matrix dimensions. We will exclusively use \textbf{Denominator Layout Notation} so that $\nabla Y$ is naturally a column vector. 
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Matrix Derivatives}
+In the following, we will break with convention temporarily and denote by $y,x \in \mathbb{R}$ scalars, $\mathbf{x} \in \mathbb{R}^n$, $\mathbf{y} \in \mathbb{R}^m$  and $\mathbf{A}$ an $m\times n$ matrix that does not depend on other variables. Denote the components by $\mathbf{x}_j$ and $\mathbf{A}_{ij}$. \newline 
+
+\textbf{P1:} Let ${y} = \mathbf{b^Tx}.$ Then $\frac{\partial  {y}}{\partial \mathbf{x}} = \mathbf{b}$. \pause
+
+\emph{Proof:}
+$$
+\frac{\partial y}{\partial \mathbf{x}_j}  = \frac{\partial}{\partial \mathbf{x}_j} \left(\sum_{k} \mathbf{b}_{k} \mathbf{x}_k\right) = \mathbf{b}_{j}\,.
+$$
+Since by convention $\frac{\partial y}{\partial \mathbf{x}}$ is a column vector whose $i$'th component is $\mathbf{b}_i$, $\frac{\partial y}{\partial \mathbf{x}} = \mathbf{b}$.
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Matrix Derivatives}
+\textbf{P2:} Let $\mathbf{y} = \mathbf{Ax}.$ Then $\frac{\partial \mathbf{y}}{\partial \mathbf{x}} = \mathbf{A}^T$. \pause
+
+\emph{Proof:}
+$$
+\frac{\partial \mathbf{y}_i}{\partial \mathbf{x}_j} = \frac{\partial}{\partial \mathbf{x}_j} \left(\sum_{k} \mathbf{A}_{ik} \mathbf{x}_k\right) = \mathbf{A}_{ij}
+$$
+Since by convention $\frac{\partial}{\partial \mathbf{x}_j} \left(\mathbf{y}_i\right)$ is a matrix whose $ji$'th component is $a_{ij}$, so $\frac{\partial \mathbf{y}}{\partial \mathbf{x}} = \mathbf{A}^T$.\pause\vspace{2em}
+
+\textbf{P3:} Let $y = \mathbf{b}^T\mathbf{Ax}.$ Then $\frac{\partial y}{\partial \mathbf{x}} = \mathbf{A}^T\mathbf{b}$. \pause
+
+\emph{Proof:}
+Let $\mathbf{w} = \mathbf{A}^T\mathbf{b}$, so that $y = \mathbf{w}^T\mathbf{x}$. This follows by (\textbf{P1}). 
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Matrix Derivatives}
+\textbf{P4:} Let $y = \mathbf{x}^T\mathbf{Ax}$, for $\mathbf{A}$ a square matrix. Then $\frac{\partial y}{\partial \mathbf{x}} = (\mathbf{A}^T+\mathbf{A})\mathbf{x}$. \pause
+
+\emph{Proof:}
+By definition,
+\begin{align*}
+\frac{\partial y}{\partial \mathbf{x}_j}  = \frac{\partial}{\partial \mathbf{x}_j} \left(\sum_{i,k} \mathbf{A}_{i,k} \mathbf{x}_i \mathbf{x}_k\right) &= \sum_{i} \mathbf{A}_{i,j} \mathbf{x}_i + \sum_{k} \mathbf{A}_{j,k}  \mathbf{x}_k
+\,.
+\end{align*}
+So $\frac{\partial y}{\partial \mathbf{x}} $ is a column vector whose $j$'th component is given by the RHS. The column vector whose $j$'th component is $\sum_{k} \mathbf{A}_{j,k} \mathbf{x}_k $ is $\mathbf{Ax}$.
+
+Similarly, $\mathbf{x}^T\mathbf{A}$ is a row vector whose $j$'th component is $ \sum_{i} \mathbf{A}_{i,j} \mathbf{x}_i $, so $\mathbf{A}^T\mathbf{x}$ is the similarly structured column vector. \newline\pause
+
+
+Note that if $\mathbf{A}$ is symmetric than $\frac{\partial y}{\partial \mathbf{x}_j}  = 2\mathbf{A}^T \mathbf{x}$.
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Matrix Derivatives}
+\textbf{P5:} Let $a = \mathbf{y}^T\mathbf{x}$, where both $\mathbf{x}$ and $\mathbf{y}$ are functions of a vector $\mathbf{z}$. Then $$\frac{\partial a}{\partial \mathbf{z}} = \frac{\partial \mathbf{y}}{\partial \mathbf z} \mathbf{x} + \frac{\partial \mathbf{x}}{\partial \mathbf z}\mathbf{y}$$. \pause
+
+\emph{Proof:}
+By definition,
+\begin{align*}
+\frac{\partial a}{\partial \mathbf{z}_j}  = \frac{\partial}{\partial \mathbf{z}_j} \left(\sum_{k} \mathbf{x}_k \mathbf{y}_k\right)
+&= \sum_{k} \mathbf{x}_k \frac{\partial \mathbf{y}_k}{\partial \mathbf{z}_j} + \mathbf{y}_k \frac{\partial \mathbf{x}_k}{\partial \mathbf{z}_j}
+\\
+&=
+\frac{\partial \mathbf{y}}{\partial \mathbf z_j} \mathbf{x} + \frac{\partial \mathbf{x}}{\partial \mathbf z_j}\mathbf{y}
+\,.
+\end{align*}
+In the last line, we have used the fact that $\frac{\partial \mathbf{y}_k}{\partial \mathbf{z}_j}$ is an element of the matrix $\frac{\partial \mathbf{y}}{\partial \mathbf{z}}$ with the $k$'s parameterizing the row and the $j$'s parameterizing the columns. Therefore $\frac{\partial \mathbf{y}}{\partial \mathbf{z}_j}$ is a \emph{row} vector.
+\end{frame}
+
+
+\begin{frame}[fragile]{Matrix Derivatives}
+\textbf{Question:} Find
+\begin{flalign*}
+\frac{\partial (\mathbf{x}^T\mathbf{x})}{\partial \mathbf{x}} = &&
+\end{flalign*}
+and
+\begin{flalign*}
+\frac{\partial (\mathbf{x}^T \mathbf{a})^2}{\partial \mathbf{x}} =&&
+\end{flalign*}\pause\vspace{2em}
+
+\emph{Answer:}
+\begin{flalign*}
+\frac{\partial (\mathbf{x} \mathbf{x}^T)}{\partial \mathbf{x}} = 2\mathbf{x}&&
+\end{flalign*}
+and
+\begin{flalign*}
+\frac{\partial (\mathbf{x}^T \mathbf{a})^2}{\partial \mathbf{x}} =  2(\mathbf{x}^T\mathbf{a})\mathbf{a}&&
+\end{flalign*}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Matrix Derivatives}
+\textbf{Question:} Find
+Lets take a moment to think about what is required in a proof for 
+\begin{flalign*}
+\frac{\partial (\mathbf{x}^T \mathbf{a})^2}{\partial \mathbf{x}} = 2(\mathbf{x}^T\mathbf{a}) \mathbf{a}&&
+\end{flalign*}\pause
+
+\emph{Incomplete proof:}
+\begin{flalign*}
+\frac{\partial (\mathbf{x}^T \mathbf{a})^2}{\partial \mathbf{x}} =  2(\mathbf{x}^T\mathbf{a}) \frac{\partial (\mathbf{x}^T \mathbf{a})}{\partial \mathbf{x}} = 2(\mathbf{x}^T\mathbf{a}) \mathbf{a}\,. &&
+\end{flalign*}
+\emph{Here, you need to justify the second step. It is true that this holds for scalars by the chain rule for the gradient but a word of justification is needed.}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Matrix Derivatives}
+\textbf{Question:} Find
+Lets take a moment to think about what is required in a proof for 
+\begin{flalign*}
+\frac{\partial (\mathbf{x}^T \mathbf{a})^2}{\partial \mathbf{x}} = 2(\mathbf{x}^T\mathbf{a}) \mathbf{a}&&
+\end{flalign*}\pause
+
+\emph{Complete proof:}
+
+By the one variable chain rule,
+\begin{flalign*}
+\frac{\partial (\mathbf{x}^T \mathbf{a})^2}{\partial \mathbf{x}_i} =  2(\mathbf{x}^T\mathbf{a}) \frac{\partial (\mathbf{x}^T \mathbf{a})}{\partial \mathbf{x}_i} = 2(\mathbf{x}^T\mathbf{a}) \mathbf{a}_i\,. &&
+\end{flalign*}
+Since $\frac{\partial (\mathbf{x}^T \mathbf{a})^2}{\partial \mathbf{x}} $ is a column vector with $i$'th entry $2(\mathbf{x}^T\mathbf{a}) \mathbf{a}_i$, it can be written 
+$$
+\frac{\partial (\mathbf{x}^T \mathbf{a})^2}{\partial \mathbf{x}_i}  = 2(\mathbf{x}^T\mathbf{a}) \mathbf{a}\,.
+$$
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Matrix Derivatives}
+\textbf{Additional Problems:}
+Assume that $\mathbf{x}$ and $\mathbf{y}$ depend on $\mathbf{z}$. Show that 
+
+\emph{Exercise 1}
+\begin{flalign*}
+\frac{\partial (\mathbf{y}^T \mathbf{A} \mathbf{x}) }{\partial \mathbf{z}} &= \frac{\partial \mathbf{y}}{\partial z} A \mathbf{x} +    \frac{\partial \mathbf{x}}{\partial z}A^T\mathbf{y}&
+\end{flalign*}
+
+\emph{Exercise 2}
+
+Let $\mathbf{A}$ be a invertable matrix that depends on a scalar $x$. Use the fact that $\mathbf{A}^{-1}\mathbf{A} = I$ to show that 
+\begin{flalign*}
+\frac{d \mathbf{A}^{-1} }{d x} &= \mathbf{A}^{-1} \frac{d \mathbf{A}}{d x}\mathbf{A}^{-1}&
+\end{flalign*}
+
+\end{frame}
+
+
+
+
+
+\end{document}
