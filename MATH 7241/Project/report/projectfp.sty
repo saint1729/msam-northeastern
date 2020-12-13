@@ -1,0 +1,260 @@
+% Package for creating front pages for project theses.
+% Implemented by Martin Helsø (martibhe@math.uio.no).
+% Version 2020-09-26.
+
+
+\NeedsTeXFormat{LaTeX2e}[1994/12/01]
+\ProvidesPackage{projectfp}
+
+\newif\ifgeometry
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OPTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Language:
+\DeclareOption{american}{\def\PFP@lang{eng}}
+\DeclareOption{english}{\def\PFP@lang{eng}}
+\DeclareOption{UKenglish}{\def\PFP@lang{eng}}
+\DeclareOption{USenglish}{\def\PFP@lang{eng}}
+\DeclareOption{norsk}{\def\PFP@lang{bm}}
+\DeclareOption{nynorsk}{\def\PFP@lang{nn}}
+
+
+%% COURSE:
+\DeclareOption{NoCourse}
+{
+    \def\PFP@course@eng{Choose a course}
+    \def\PFP@course@bm{Velg et emne}
+    \def\PFP@course@nn{Vel eit emne}
+}
+\DeclareOption{MAT2000}
+{
+    \def\PFP@course@eng
+    {
+        MAT2000
+        \textthreequartersemdash\
+        Project Work in Mathematics
+    }
+    \def\PFP@course@bm
+    {
+        MAT2000
+        \textthreequartersemdash\
+        Prosjektarbeid i matematikk
+    }
+    \def\PFP@course@nn
+    {
+        MAT2000
+        \textthreequartersemdash\
+        Prosjektarbeid i matematikk
+    }
+}
+\DeclareOption{MAT2500}
+{
+    \geometrytrue
+    \def\PFP@course@eng
+    {
+        MAT2500
+        \textthreequartersemdash\
+        Geometry
+    }
+    \def\PFP@course@bm
+    {
+        MAT2500
+        \textthreequartersemdash\
+        Geometri
+    }
+    \def\PFP@course@nn
+    {
+        MAT2500
+        \textthreequartersemdash\
+        Geometri
+    }
+}
+\DeclareOption{MEK3200}
+{
+    \def\PFP@course@eng
+    {
+        MEK3200
+        \textthreequartersemdash\
+        Project Work in Mechanics
+    }
+    \def\PFP@course@bm
+    {
+        MEK3200
+        \textthreequartersemdash\
+        Prosjektarbeid i mekanikk
+    }
+    \def\PFP@course@nn
+    {
+        MEK3200
+        \textthreequartersemdash\
+        Prosjektarbeid i mekanikk
+    }
+}
+\DeclareOption{STK-MAT2011}
+{
+    \def\PFP@course@eng
+    {
+        STK-MAT2011
+        \textthreequartersemdash\
+        Project Work in Finance, Insurance, Risk and Data Analysis
+    }
+    \def\PFP@course@bm
+    {
+        STK-MAT2011
+        \textthreequartersemdash\
+        Prosjekt i finans, forsikring, risiko og dataanalyse
+    }
+    \def\PFP@course@nn
+    {
+        STK-MAT2011
+        \textthreequartersemdash\
+        Prosjekt i finans, forsikring, risiko og dataanalyse
+    }
+}
+
+
+%% Standard options:
+\ExecuteOptions{english}
+\ExecuteOptions{NoCourse}
+\ProcessOptions*
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\RequirePackage{calc}
+\RequirePackage{graphicx}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{textcomp}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\@ifclassloaded{memoir}
+{
+    \newcommand{\projectfrontpage}
+    {
+        \begin{titlingpage}
+            \calccentering{\unitlength}
+            \begin{adjustwidth*}{\unitlength}{-\unitlength}
+                \printtitle
+            \end{adjustwidth*}
+        \end{titlingpage}
+    }
+}
+{
+    \newcommand{\projectfrontpage}
+    {
+        \begin{titlepage}
+            \printtitle
+        \end{titlepage}
+    }
+}
+
+\newcommand{\printtitle}
+{
+    \renewcommand{\sfdefault}{phv}
+    \sffamily
+    \fontsize{15}{18pt}
+    \selectfont
+    \raggedright
+
+    \vspace*{-5mm}
+    \includegraphics[scale = 0.45]{projectfp-images/projectfp-logo-\PFP@lang}
+
+    \vskip18mm
+
+    \resizebox
+    {
+        \ifdim \width > \textwidth
+            \textwidth
+        \else
+            \width
+        \fi
+    }{!}
+    {%
+        \ifdefined \authors
+            \authors
+        \else
+            \@author
+        \fi
+    }
+
+    \vskip6.5mm
+
+    {
+        \fontsize{21}{25pt}
+        \selectfont
+        \bfseries
+        \boldmath
+        \@title
+        \par
+    }
+
+    \vskip17mm
+
+    {
+        \bfseries
+        \csname PFP@course@\PFP@lang\endcsname
+    }
+
+    \vskip9mm
+    
+    \ifgeometry
+    \else
+        \csname PFP@supervisor@\PFP@lang\endcsname:
+        \PFP@supervisor@name
+    \fi
+
+    \vfill
+
+    \begin{minipage}[c][26mm]{28mm}
+        \hspace*{1mm}
+        \includegraphics[width = 26mm]{projectfp-images/projectfp-apollon}
+    \end{minipage}%
+    \begin{minipage}[c]{\textwidth - 28mm}
+        \hfill
+        \bfseries
+        \the\year
+    \end{minipage}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SUPERVISOR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\supervisor}[1]{\def\PFP@supervisor@name{#1}\checknextarg}
+\newcommand{\checknextarg}
+{
+    \@ifnextchar{\bgroup}
+    {
+        \def\PFP@supervisor@eng{Supervisors}
+        \def\PFP@supervisor@bm{Veiledere}
+        \def\PFP@supervisor@nn{Rettleiarar}
+        \gobblenextarg
+    }{}
+}
+\newcommand{\gobblenextarg}[1]
+{
+    \@ifnextchar{\bgroup}
+    {
+        \g@addto@macro\PFP@supervisor@name{, #1}
+        \gobblenextarg
+    }
+    {
+        \g@addto@macro\PFP@supervisor@name
+        { \csname PFP@and@\PFP@lang\endcsname\ #1}
+    }
+}
+\newcommand{\PFP@supervisor@name}{}
+\newcommand{\PFP@supervisor@eng}{Supervisor}
+\newcommand{\PFP@supervisor@bm}{Veileder}
+\newcommand{\PFP@supervisor@nn}{Rettleiar}
+\newcommand{\PFP@and@eng}{and}
+\newcommand{\PFP@and@bm}{og}
+\newcommand{\PFP@and@nn}{og}
+
+
+\endinput
