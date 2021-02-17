@@ -1,0 +1,145 @@
+                nation      lowbwt     life60     life92
+         "Afghanistan"         20         33         43
+             "Albania"          7         62         73
+             "Algeria"          9         47         66
+              "Angola"         19         33         46
+           "Argentina"          8         65         71
+             "Armenia"          .          .         72
+           "Australia"          6         71         77
+             "Austria"          6         69         76
+          "Azerbaijan"          .          .         71
+          "Bangladesh"         50         40         53
+             "Belarus"          .          .         71
+             "Belgium"          6         70         76
+               "Benin"          .         35         46
+              "Bhutan"          .         37         48
+             "Bolivia"         12         43         61
+            "Botswana"          8         46         61
+              "Brazil"         11         55         66
+            "Bulgaria"          6         68         72
+        "Burkina Faso"         21         36         48
+             "Burundi"          .         41         48
+            "Cambodia"          .         42         51
+            "Cameroon"         13         39         56
+              "Canada"          6         71         77
+"Central African Rep."         15         39         47
+                "Chad"          .         35         47
+               "Chile"          7         57         72
+               "China"          9         47         71
+            "Colombia"         10         57         69
+               "Congo"         16         42         52
+          "Costa Rica"          6         62         76
+       "Cote d'Ivoire"         14         39         52
+                "Cuba"          8         64         76
+          "Czech Rep."          .          .         72
+             "Denmark"          6         72         76
+      "Dominican Rep."         16         52         67
+             "Ecuador"         11         53         66
+               "Egypt"         10         46         61
+         "El Salvador"         11         50         66
+             "Eritrea"          .          .         47
+             "Estonia"          .         69         71
+            "Ethiopia"         16         36         47
+             "Finland"          4         68         76
+              "France"          5         70         77
+               "Gabon"          .         41         53
+             "Georgia"          .          .         73
+             "Germany"          .         70         76
+               "Ghana"         17         45         56
+              "Greece"          6         69         77
+           "Guatemala"         14         46         64
+              "Guinea"         21         34         44
+       "Guinea-Bissau"         20         34         43
+               "Haiti"         15         42         56
+            "Honduras"          9         46         66
+           "Hong Kong"          8         66         78
+             "Hungary"          9         68         70
+               "India"         33         44         60
+           "Indonesia"         14         41         62
+                "Iran"          9         50         67
+                "Iraq"         15         48         66
+             "Ireland"          4         70         75
+              "Israel"          7         69         76
+               "Italy"          5         69         77
+             "Jamaica"         11         63         73
+               "Japan"          6         68         79
+              "Jordan"          7         47         68
+          "Kazakhstan"          .          .         69
+               "Kenya"         16         45         59
+         "Korea, Dem."          .         54         71
+         "Korea, Rep."          9         54         71
+              "Kuwait"          7         60         75
+          "Kyrgyzstan"          .          .         66
+             "Lao PDR"         18         40         51
+              "Latvia"          .         70         71
+             "Lebanon"         10         60         68
+             "Lesotho"         11         43         60
+             "Liberia"          .         41         55
+   "Libyan Arab Jama."          .         47         63
+           "Lithuania"          .         69         73
+          "Madagascar"         10         41         55
+              "Malawi"         20         38         44
+            "Malaysia"         10         54         71
+                "Mali"         17         35         46
+          "Mauritania"         11         35         48
+           "Mauritius"          9         59         70
+              "Mexico"         12         57         70
+             "Moldova"          .          .         68
+            "Mongolia"         10         47         63
+             "Morocco"          9         47         63
+          "Mozambique"         20         37         47
+             "Myanmar"         16         44         57
+             "Namibia"         12         42         59
+               "Nepal"          .         38         53
+         "Netherlands"          .         73         77
+         "New Zealand"          6         71         76
+           "Nicaragua"         15         47         66
+               "Niger"         15         35         46
+             "Nigeria"         16         40         52
+              "Norway"          4         73         77
+                "Oman"         10         40         69
+            "Pakistan"         25         43         59
+              "Panama"         10         61         73
+    "Papua New Guinea"         23         41         56
+            "Paraguay"          8         64         67
+                "Peru"         11         48         64
+         "Philippines"         15         53         65
+              "Poland"          .         67         72
+            "Portugal"          5         63         75
+             "Romania"          7         65         70
+        "Russian Fed."          .          .         69
+              "Rwanda"         17         42         46
+        "Saudi Arabia"          7         44         69
+             "Senegal"         11         37         49
+        "Sierra Leone"         17         32         43
+           "Singapore"          7         64         74
+            "Slovakia"          .          .         72
+             "Somalia"         16         36         47
+        "South Africa"          .         49         63
+               "Spain"          4         69         77
+           "Sri Lanka"         25         62         71
+               "Sudan"         15         39         52
+              "Sweden"          5         73         78
+         "Switzerland"          5         71         78
+    "Syrian Arab Rep."         11         50         67
+            "Tanzania"         14         41         51
+            "Thailand"         13         52         69
+                "Togo"         20         39         55
+ "Trinidad and Tobago"         10         63         71
+             "Tunisia"          8         48         68
+              "Turkey"          8         50         67
+        "Turkmenistan"          .          .         66
+                 "USA"          7         70         76
+              "Uganda"          .         43         42
+             "Ukraine"          .          .         70
+"United Arab Emirates"          7         53         71
+      "United Kingdom"          7         71         76
+             "Uruguay"          8         68         72
+          "Uzbekistan"          .          .         69
+           "Venezuela"          9         60         70
+            "Viet Nam"         17         44         64
+               "Yemen"         19         36         52
+ "Yugoslavia (former)"          .         63         72
+               "Zaire"         15         41         52
+              "Zambia"         13         42         45
+            "Zimbabwe"         14         45         56

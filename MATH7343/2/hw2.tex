@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[all]{xy}
+
+
+\usepackage{amsmath,amsthm,amssymb,color,latexsym}
+\usepackage{geometry}        
+\geometry{letterpaper}    
+\usepackage{graphicx}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\usepackage[export]{adjustbox}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},   commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+
+\newtheorem{problem}{Problem}
+
+\newenvironment{solution}[1][\it{Solution}]{\textbf{#1. } }{$\square$}
+
+
+\begin{document}
+\noindent MATH 7343: Applied Statistics Spring 2021\hfill Homework Assignment \#2\\
+Sai Nikhil (02/10/2021)\hfill thirandas.s@northeastern.edu
+
+\hrulefill
+
+
+\begin{problem}
+The blood type among Americans is approximately distributed as: 37\% type A, 13\% type B, 44\% type O, and 6\% type AB. Suppose the blood types are distributed the same in both male and female populations. And assume that the blood types are independent of marriage.\\
+(A) An individual with type B blood can safely receive transfusions only from persons with type B or type O blood. What is the probability of a husband has type B or type O blood? If a woman has type B blood, what is the probability that her husband is an acceptable donor for her?\\
+(B) What is the probability that in a randomly chosen couple the husband has type A blood and the wife has type B blood?
+\end{problem}
+\begin{solution}
+Given,
+\begin{align*}
+P(A) &= 0.37\\
+P(B) &= 0.13\\
+P(O) &= 0.44\\
+P(AB) &= 0.06\\
+\end{align*}
+(A)\\
+$$P(B \cup O) = P(B) + P(O) - P(B \cap O)$$
+We know that, $B$ and $O$ are independent events. Hence, $P(B \cap O) = 0$.
+$$P(B \cup O) = 0.13 + 0.44 - 0 = \boxed{0.57}$$
+Acceptable donor for woman $\implies$ husband has type B or type O. This is same as,
+$$P(B \cup O) = \boxed{0.57}$$
+\end{solution}
+
+\end{document}
