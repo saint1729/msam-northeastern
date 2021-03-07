@@ -1,0 +1,23 @@
+*          state          age        popn     deaths
+          "Maine"        "0-4"      75037       1543
+          "Maine"        "5-9"      79727        148
+          "Maine"      "10-14"      74061        104
+          "Maine"      "15-19"      68683        153
+          "Maine"      "20-24"      60575        224
+          "Maine"      "25-34"     105723        413
+          "Maine"      "35-44"     101192        552
+          "Maine"      "45-54"      90346        980
+          "Maine"      "55-64"      72478       1476
+          "Maine"      "65-74"      46614       2433
+          "Maine"        "75+"      22396       3056
+ "South Carolina"        "0-4"     205076       4905
+ "South Carolina"        "5-9"     240750        446
+ "South Carolina"      "10-14"     222808        410
+ "South Carolina"      "15-19"     211345        901
+ "South Carolina"      "20-24"     166354       1073
+ "South Carolina"      "25-34"     219327       1910
+ "South Carolina"      "35-44"     191349       2377
+ "South Carolina"      "45-54"     143509       2862
+ "South Carolina"      "55-64"      80491       2667
+ "South Carolina"      "65-74"      40441       2486
+ "South Carolina"        "75+"      16723       2364

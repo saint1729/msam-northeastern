@@ -1,0 +1,12 @@
+ region                          positive  tested  percent
+"New York State exclusive of NYC"     601    346522    0.17
+"  NYC suburban"                      329    120422    0.27
+"  Mid-Hudson Valley"                  71     29450    0.24
+"  Upstate urban"                     119     88088    0.14
+"  Upstate rural"                      82    108562    0.08
+"New York City"                      3650    294062    1.24
+"  Manhattan"                         799     50364    1.59
+"  Bronx"                             998     58003    1.72
+"  Brooklyn"                         1352    104613    1.29
+"  Queens"                            424     67474    0.63
+"  Staten Island"                      77     13608    0.57

@@ -1,0 +1,15 @@
+    cause                ypll1986    ypll1987
+"All causes"              12093486    12045778 
+"Unintentional injuries"   2358426     2295710
+"Malignant neoplasms"      1832210     1837742
+"Heart disease"            1557041     1494227
+"Suicide/homicide"         1360508     1289223
+"Congenital anomalies"      661117      642551
+"Prematurity"               428796      422813
+"HIV infection"             246823      357536
+"SIDS"                      340431      286733
+"Cerebrovascular disease"   246131      246479
+"Chronic liver disease"     231558      228145
+"Pneumonia/influenza"       175386      166775
+"Pulmonary disease"         128590      123260
+"Diabetes mellitus"         121117      119155 

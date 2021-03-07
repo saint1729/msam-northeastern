@@ -1,0 +1,25 @@
+  nation                e0   percent
+  "Argentina"            71     110
+  "Australia"            77     109
+  "Brazil"               66     109
+  "Canada"               77     105
+  "China"                71     109
+  "Egypt"                61     104
+  "Ethiopia"             47     107
+  "Finland"              76     111
+  "France"               77     111
+  "Greece"               77     107
+  "India"                60     101
+  "Israel"               76     105
+  "Italy"                77     109
+  "Japan"                79     108
+  "Mexico"               70     110
+  "Philippines"          65     106
+  "Poland"               72     113
+  "Russian Federation"   69       .
+  "Saudi Arabia"         69     104
+  "Spain"                77     108
+  "Sweden"               78     108
+  "United Kingdom"       76     107
+  "United States"        76     109
+  "Venezuela"            70     109

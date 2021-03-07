@@ -1,0 +1,52 @@
+                state        rate
+                "Maine"      902.5
+        "New Hampshire"      766.3
+              "Vermont"      839.4
+        "Massachusetts"      899.1
+         "Rhode Island"      945.6
+          "Connecticut"      861.6
+             "New York"      918.5
+           "New Jersey"      906.2
+         "Pennsylvania"     1029.7
+                 "Ohio"      899.3
+              "Indiana"        883
+             "Illinois"      879.3
+             "Michigan"      838.3
+            "Wisconsin"      846.1
+            "Minnesota"      784.1
+                 "Iowa"      948.8
+             "Missouri"      982.3
+         "North Dakota"      898.5
+         "South Dakota"      945.4
+             "Nebraska"        915
+               "Kansas"        882
+             "Delaware"      859.9
+             "Maryland"        790
+ "District of Columbia"     1214.9
+             "Virginia"        772
+        "West Virginia"     1090.2
+       "North Carolina"        872
+       "South Carolina"      850.4
+              "Georgia"      782.4
+              "Florida"     1036.3
+             "Kentucky"      933.3
+            "Tennessee"      926.8
+              "Alabama"      951.1
+          "Mississippi"      965.9
+             "Arkansas"     1042.3
+            "Louisiana"      879.7
+             "Oklahoma"      951.9
+                "Texas"      730.1
+              "Montana"      859.5
+                "Idaho"        739
+              "Wyoming"      709.7
+             "Colorado"      647.7
+           "New Mexico"      706.5
+              "Arizona"      810.3
+                 "Utah"      539.5
+               "Nevada"        769
+           "Washington"      742.1
+               "Oregon"      866.9
+           "California"      698.6
+               "Alaska"      391.8
+               "Hawaii"      602.9

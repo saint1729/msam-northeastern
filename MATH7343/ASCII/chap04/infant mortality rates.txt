@@ -1,0 +1,25 @@
+  nation              rate
+  "Argentina"            22
+  "Australia"             7
+  "Brazil"               54
+  "Canada"                7
+  "China"                35
+  "Egypt"                43
+  "Ethiopia"            123
+  "Finland"               6
+  "France"                7
+  "Greece"                8
+  "India"                83
+  "Israel"                9
+  "Italy"                 8
+  "Japan"                 4
+  "Mexico"               28
+  "Philippines"          46
+  "Poland"               14
+  "Russian Federation"   28
+  "Saudi Arabia"         35
+  "Spain"                 8
+  "Sweden"                6
+  "United Kingdom"        7
+  "United States"         9
+  "Venezuela"            20

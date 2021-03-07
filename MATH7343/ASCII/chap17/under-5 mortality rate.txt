@@ -1,0 +1,21 @@
+            nation  immunized    under5
+           "Bolivia"        77       118
+            "Brazil"        69        65
+          "Cambodia"        32       184
+            "Canada"        85         8
+             "China"        94        43
+    "Czech Republic"        99        12
+             "Egypt"        89        55
+          "Ethiopia"        13       208
+           "Finland"        95         7
+            "France"        95         9
+            "Greece"        54         9
+             "India"        89       124
+             "Italy"        95        10
+             "Japan"        87         6
+            "Mexico"        91        33
+            "Poland"        98        16
+"Russian Federation"        73        32
+           "Senegal"        47       145
+            "Turkey"        76        87
+    "United Kingdom"        90         9

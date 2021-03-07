@@ -1,0 +1,7 @@
+   state       race   births  deaths
+ "Colorado"   "black"    3166     52
+ "Colorado"   "white"   48805    469 
+ "Colorado"   "other"    1837      6 
+ "Louisiana"  "black"   29670    525 
+ "Louisiana"  "white"   42749    344 
+ "Louisiana"  "other"    1548      3

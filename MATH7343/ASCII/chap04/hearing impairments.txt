@@ -1,0 +1,7 @@
+        status           age    population  impairments  
+ "currently employed"   "17-44"    67987         346
+ "currently employed"   "45-64"    27592         179 
+ "currently employed"   "65+"       3338          27
+ "not in labor force"   "17-44"    20760          80 
+ "not in labor force"   "45-64"    15108         117 
+ "not in labor force"   "65+"      20910         171
