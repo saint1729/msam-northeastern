@@ -18,5 +18,5 @@
 | 14 | Data Mining: Data | [Video Link](https://northeastern.zoom.us/rec/play/5y7SVrrOOmHlTQHN-DsQjTKM4BIM796XqK_BLWE9l2N_MtlxAGoCwH_M0mplyeHu0-qgMl7sHWeiOyC4.vlhzwCs-6uncvAin) | Cnb4Q#E1 |
 | 15 | Midterm paper discussion, Grading & Data Mining: Data (contd.) | [Video Link](https://northeastern.zoom.us/rec/play/hSoNUQJIu8BOVbgSdYaUV123g0Dv6XQJzpcmyIt6h33MZdtH6aee1DjZFYA3i7fhfDsVzEPYzWK_u7mh.SS3ZeNWmAh2VZ6rN) | b\*fh.2ic |
 | 16 | Neural Networks | [Video Link](https://northeastern.zoom.us/rec/play/I6_5K95IcUoC0_7RKC8TzwqwkjgRo-I4WcMP24dEvcZ5Sb3CMbu01A_2SwgzwGdM55XP0IJObIyQdF5u._fmUrXotVAQMqtMr) | =dFk94=p |
-
+| 17 | Convolutional Neural Networks & Deep Neural Networks | [Video Link](https://northeastern.zoom.us/rec/play/mEYLk6p_QvlpY3usWeQnAvn3Kctb1lQvDtEv_RMl3WsQ60fixVfnSHiCldiJc9ZBBK-2SgQg_BFbAUKG.GIoHsWqPtnSXLiuY) | a7wKvq\*7 |
 
