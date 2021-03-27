@@ -1,0 +1,7 @@
+library(agricolae)
+rt <- read.csv("response_times.csv", header = TRUE, sep = ",")
+boxplot(time~size, data = rt)
+res.aov <- aov(time ~ size, data = rt)
+summary(res.aov)
+TukeyHSD(res.aov, confidence.level=0.95)
+pairwise.t.test(rt$time, g=rt$size, p.adjust.method = 'none')

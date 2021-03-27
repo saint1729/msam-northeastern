@@ -1,0 +1,6 @@
+data <- read.table(file="insure.txt", header = TRUE)
+uninsured_women <- subset(data, data$group == 0)
+insured_women <- subset(data, data$group == 1)
+wilcox.test(uninsured_women$stage, insured_women$stage)
+plot(uninsured_women$stage)
+plot(insured_women$stage)

@@ -1,0 +1,5 @@
+data <- read.csv(file="lowbwt.csv", header = TRUE, sep = ",")
+data$sex<-as.factor(data$sex)
+data$tox<-as.factor(data$tox)
+summary(aov(sbp~sex+tox, data=data))
+summary(aov(sbp~sex,data=data))  
