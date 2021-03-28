@@ -20,6 +20,6 @@
 | 16 | Neural Networks | [Video Link](https://northeastern.zoom.us/rec/play/I6_5K95IcUoC0_7RKC8TzwqwkjgRo-I4WcMP24dEvcZ5Sb3CMbu01A_2SwgzwGdM55XP0IJObIyQdF5u._fmUrXotVAQMqtMr) | =dFk94=p |
 | 17 | Convolutional Neural Networks & Deep Neural Networks | [Video Link](https://northeastern.zoom.us/rec/play/mEYLk6p_QvlpY3usWeQnAvn3Kctb1lQvDtEv_RMl3WsQ60fixVfnSHiCldiJc9ZBBK-2SgQg_BFbAUKG.GIoHsWqPtnSXLiuY) | a7wKvq\*7 |
 | 18 | Performance Evaluation (1 dimensional & 2 dimensional plots, ROC, PR-RC Curve) | [Video Link](https://northeastern.zoom.us/rec/play/GZDzylN1Ajg1EEBghmYtcTa1icG-RDEFvZz06vX6NpoWx_8kL4NqHWwoiHwmoMDFAa8idwBUQ4JpkkVW.xuKMyv-PMBfIJH2L) | &D5LKB^q |
-| 19 | Performance Evaluation (contd.) (AUC Curve) | [Video Link](https://northeastern.zoom.us/rec/play/HaQQNhbIIg5YB5TBOyNvMr-mnCWjLRFhXSWdO0AhqVtNwwbhnyaB7ygXkg12xssTh62FeBeTxenG4ats.MOPwMkFQOSnUWhqY) | &D5LKB^q |
+| 19 | Performance Evaluation (contd.) (AUC Curve) | [Video Link](https://northeastern.zoom.us/rec/play/HaQQNhbIIg5YB5TBOyNvMr-mnCWjLRFhXSWdO0AhqVtNwwbhnyaB7ygXkg12xssTh62FeBeTxenG4ats.MOPwMkFQOSnUWhqY) | XMgm0.t^ |
 
 
