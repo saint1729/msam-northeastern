@@ -18,7 +18,7 @@ eta = .1; % learning rate
 n0 = 250;    % number of negatives
 n1 = 250;    % number of positives
 m0 = [1 2]; % mean for negatives
-m1 = [6 3]; % mean for positives
+m1 = [6 4]; % mean for positives
 s0 = 1;     % std for positives
 s1 = 1;     % std for negatives
 
@@ -36,19 +36,33 @@ for i = 1 : 10
     
     % create class label vector
     y = [zeros(n0, 1); ones(n1, 1)];
-
+    
     % add a column of ones to matrix X
     X = [ones(size(X, 1), 1) X];
-
+    
+    temp = [1; 2];
+    disp(temp);
+    disp(size(y));
+    
     % initial coefficients using ordinary least squares regression
-    %w = inv(X' * X) * X' * y;
+    disp(X0);
+    disp(X1);
+    disp(X);
+    disp(X');
+    disp(X'*X);
+    disp(inv(X'*X));
+    disp(inv(X'*X)*X');
+    w = inv(X' * X) * X' * (y);
+    disp(w)
+    w = inv(X' * X) * X' * (y);
+    disp(w)
     % initial coefficients using random number generator (uniform distribution between 0 and 1)
-    w = 2 * rand(3, 1) - 1; 
+%     w = 2 * rand(3, 1) - 1; 
     
     % plot line
     plot_logreg_figure(X0, X1, X, w);
 
-    pause(1)
+    pause(100)
     
     % calculate log-likelihood
     ll = get_log_likelihood(X, y, w);
