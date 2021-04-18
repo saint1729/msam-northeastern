@@ -129,15 +129,26 @@ if __name__ == '__main__':
     # print(data_cleaner.hockey_df.head())
     # print(data_cleaner.soccer_df.head())
 
-    baseball_output_df = pd.merge(data_cleaner.baseball_df, data_cleaner.crime_df, on='Date', how='inner').sort_values(by=["Date"])
+    all_dates_df = pd.date_range(start='01/01/2011', end='12/31/2019').to_frame(name="Date")
+    data_cleaner.baseball_df = pd.merge(data_cleaner.baseball_df, all_dates_df, on="Date", how="right")
+    data_cleaner.basketball_df = pd.merge(data_cleaner.basketball_df, all_dates_df, on="Date", how="right")
+    data_cleaner.hockey_df = pd.merge(data_cleaner.hockey_df, all_dates_df, on="Date", how="right")
+    data_cleaner.soccer_df = pd.merge(data_cleaner.soccer_df, all_dates_df, on="Date", how="right")
+
+    data_cleaner.baseball_df.fillna(1, inplace=True)
+    data_cleaner.basketball_df.fillna(1, inplace=True)
+    data_cleaner.hockey_df.fillna(1, inplace=True)
+    data_cleaner.soccer_df.fillna(1, inplace=True)
+
+    baseball_output_df = pd.merge(data_cleaner.baseball_df, data_cleaner.crime_df, on='Date', how='right').sort_values(by=["Date"])
     baseball_output_df.to_csv("./output/baseball_data.csv", index=False)
 
-    basketball_output_df = pd.merge(data_cleaner.basketball_df, data_cleaner.crime_df, on='Date', how='inner').sort_values(by=["Date"])
+    basketball_output_df = pd.merge(data_cleaner.basketball_df, data_cleaner.crime_df, on='Date', how='right').sort_values(by=["Date"])
     basketball_output_df.to_csv("./output/basketball_data.csv", index=False)
 
-    hockey_output_df = pd.merge(data_cleaner.hockey_df, data_cleaner.crime_df, on='Date', how='inner').sort_values(by=["Date"])
+    hockey_output_df = pd.merge(data_cleaner.hockey_df, data_cleaner.crime_df, on='Date', how='right').sort_values(by=["Date"])
     hockey_output_df.to_csv("./output/hockey_data.csv", index=False)
 
-    soccer_output_df = pd.merge(data_cleaner.soccer_df, data_cleaner.crime_df, on='Date', how='inner').sort_values(by=["Date"])
+    soccer_output_df = pd.merge(data_cleaner.soccer_df, data_cleaner.crime_df, on='Date', how='right').sort_values(by=["Date"])
     soccer_output_df.to_csv("./output/soccer_data.csv", index=False)
 
