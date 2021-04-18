@@ -7,7 +7,8 @@ import pandas as pd
 def get_baseball_date(day, year):
     day_components = day.split(" ")
     day_components[0] = day_components[0][:3]
-    day_components = day_components[:3]
+    if len(day_components) > 3:
+        return None
     return datetime.datetime.strptime(' '.join(day_components) + ' ' + year, '%a %b %d %Y').strftime('%d/%m/%Y')
 
 
@@ -35,6 +36,10 @@ def get_crime_date_old(date):
     return datetime.datetime.strptime(date, '%m/%d/%Y').strftime('%d/%m/%Y')
 
 
+def get_numeric_from_win_loss(won):
+    return 1 if won == "W" else 0
+
+
 class Constants:
     BASEBALL_DIR_NAME = "baseball"
     BASKETBALL_DIR_NAME = "basketball"
@@ -55,7 +60,10 @@ class DataCleaner():
         c3 = pd.Series(data=None, dtype='int64', name='Crimes')
 
         self.df = pd.concat([c1, c2, c3], axis=1)
-        self.sports_df = pd.concat([c1, c2], axis=1)
+        self.baseball_df = pd.concat([c1, c2], axis=1)
+        self.basketball_df = pd.concat([c1, c2], axis=1)
+        self.hockey_df = pd.concat([c1, c2], axis=1)
+        self.soccer_df = pd.concat([c1, c2], axis=1)
         self.crime_df = pd.concat([c1, c3], axis=1)
 
     def clean_sports_data(self):
@@ -69,23 +77,30 @@ class DataCleaner():
                                     self.data_folder_path + Constants.FOLDER_SEPARATOR + directory + Constants.FOLDER_SEPARATOR + sub_dir):
                                 for file in sub_sub_files:
                                     full_file_path = self.data_folder_path + Constants.FOLDER_SEPARATOR + directory + Constants.FOLDER_SEPARATOR + sub_dir + Constants.FOLDER_SEPARATOR + file
-                                    sport_df = pd.read_csv(full_file_path, names=['Actual Date', 'Won'])
+                                    sport_df = pd.read_csv(full_file_path, names=['Actual Date', 'WonOrLost'])
+                                    sport_df['Won'] = sport_df['WonOrLost'].apply(lambda x: get_numeric_from_win_loss(x))
                                     if sub_dir == Constants.BASEBALL_DIR_NAME:
                                         year = file.split("_")[-1].split(".")[0]
                                         sport_df['Date'] = pd.to_datetime(
                                             sport_df['Actual Date'].apply(lambda x: get_baseball_date(x, year)))
+                                        self.baseball_df = self.baseball_df.append(sport_df[['Date', 'Won']])
+                                        self.baseball_df = self.baseball_df.dropna()
                                     elif sub_dir == Constants.BASKETBALL_DIR_NAME:
                                         sport_df['Date'] = pd.to_datetime(
                                             sport_df['Actual Date'].apply(lambda x: get_basketball_date(x)))
+                                        self.basketball_df = self.basketball_df.append(sport_df[['Date', 'Won']])
+                                        self.basketball_df = self.basketball_df.dropna()
                                     elif sub_dir == Constants.HOCKEY_DIR_NAME:
                                         sport_df['Date'] = pd.to_datetime(
                                             sport_df['Actual Date'].apply(lambda x: get_hockey_date(x)))
+                                        self.hockey_df = self.hockey_df.append(sport_df[['Date', 'Won']])
+                                        self.hockey_df = self.hockey_df.dropna()
                                     elif sub_dir == Constants.SOCCER_DIR_NAME:
-                                        year = file.split("_")[1].split(".")[0]
+                                        year = file.split("_")[-1].split(".")[0]
                                         sport_df['Date'] = pd.to_datetime(
                                             sport_df['Actual Date'].apply(lambda x: get_soccer_date(x, year)))
-                                    self.sports_df = self.sports_df.append(sport_df[['Date', 'Won']])
-                                    self.sports_df = self.sports_df.groupby('Date').head(1).reset_index(drop=True)
+                                        self.soccer_df = self.soccer_df.append(sport_df[['Date', 'Won']])
+                                        self.soccer_df = self.soccer_df.dropna()
                 elif directory == Constants.CRIME_DIR_NAME:
                     for sub_root, sub_dirs, sub_files in os.walk(
                             self.data_folder_path + Constants.FOLDER_SEPARATOR + directory):
@@ -106,8 +121,23 @@ class DataCleaner():
 
 
 if __name__ == '__main__':
-    data_cleaner = DataCleaner("./data")
+    data_cleaner = DataCleaner("./input")
     data_cleaner.clean_sports_data()
-    output_df = pd.merge(data_cleaner.sports_df, data_cleaner.crime_df, on='Date', how='left')
-    output_df = output_df.sort_values(by=["Date"])
-    output_df.to_csv("data.csv", index=False)
+
+    # print(data_cleaner.baseball_df.head())
+    # print(data_cleaner.basketball_df.head())
+    # print(data_cleaner.hockey_df.head())
+    # print(data_cleaner.soccer_df.head())
+
+    baseball_output_df = pd.merge(data_cleaner.baseball_df, data_cleaner.crime_df, on='Date', how='inner').sort_values(by=["Date"])
+    baseball_output_df.to_csv("./output/baseball_data.csv", index=False)
+
+    basketball_output_df = pd.merge(data_cleaner.basketball_df, data_cleaner.crime_df, on='Date', how='inner').sort_values(by=["Date"])
+    basketball_output_df.to_csv("./output/basketball_data.csv", index=False)
+
+    hockey_output_df = pd.merge(data_cleaner.hockey_df, data_cleaner.crime_df, on='Date', how='inner').sort_values(by=["Date"])
+    hockey_output_df.to_csv("./output/hockey_data.csv", index=False)
+
+    soccer_output_df = pd.merge(data_cleaner.soccer_df, data_cleaner.crime_df, on='Date', how='inner').sort_values(by=["Date"])
+    soccer_output_df.to_csv("./output/soccer_data.csv", index=False)
+
