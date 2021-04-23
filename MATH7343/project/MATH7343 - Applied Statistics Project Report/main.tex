@@ -1,0 +1,786 @@
+%%%%%%%% Sample LaTeX input for Complex Systems %%%%%%%%%%% 
+% Revision 4, Jun 27, 2018
+%
+% This is a LaTeX input file  
+% Text following % on a particular line is treated as a comment, and 
+% ignored by LaTeX.  
+% You do not need to type any text that follows a % 
+% 
+\documentclass{article}
+
+\usepackage{epsf,hyperref}
+\usepackage{amssymb}
+\usepackage{minted}
+
+%% complex-systems.sty, being the LaTeX style file for
+%% Complex Systems. Copyright (c) 2014-2018, Complex Systems, Inc.
+% Revision 3, Jun 18, 2018
+
+%% Setting page size, dimensions, and offsets
+\voffset = 0.25in
+\hoffset = -0.25in
+\oddsidemargin=60pt
+\evensidemargin=66pt
+\topmargin=18pt
+\headheight=10pt
+\headsep=24pt
+\footskip=18pt
+\textwidth=25.5pc
+\textheight=45pc
+\skip\footins=18pt
+\parskip=0pt
+\setlength\baselineskip{12pt}
+\parindent=12pt
+
+\hyphenation{Wolfram}
+
+% Setting float parameters
+\setcounter{topnumber}{3}
+\renewcommand\topfraction{.85}
+\setcounter{bottomnumber}{2}
+\renewcommand\bottomfraction{.3}
+\setcounter{totalnumber}{4}
+\renewcommand\textfraction{.15}
+\renewcommand\floatpagefraction{.85}
+
+%% Setting text size and page options
+\DeclareOption{10pt}{\renewcommand\@ptsize{0}}
+\DeclareOption{twoside}{\@twosidetrue  \@mparswitchtrue}
+\ProcessOptions
+
+%% Defining display math to be flush left
+\newdimen\mathindent
+\mathindent=2pc
+
+\AtEndOfClass{\mathindent\leftmargini}
+
+\def\[{\relax\ifmmode\@badmath\else
+ \begin{trivlist}%
+ \@beginparpenalty\predisplaypenalty
+ \@endparpenalty\postdisplaypenalty
+ \item[]\leavevmode
+ \hbox to\linewidth\bgroup $\m@th\displaystyle
+ \hskip\mathindent\bgroup\fi}
+
+\def\]{\relax\ifmmode \egroup $\hfil
+       \egroup \end{trivlist}\else \@badmath \fi}
+
+\def\equation{\@beginparpenalty\predisplaypenalty
+  \@endparpenalty\postdisplaypenalty
+\refstepcounter{equation}\trivlist \item[]\leavevmode
+  \hbox to\linewidth\bgroup $\m@th% $ to make dollar sign nesting
+  \displaystyle
+\hskip\mathindent}
+
+\def\endequation{$\hfil
+           \displaywidth\linewidth\@eqnnum\egroup \endtrivlist}
+
+%% Defined to reduce space around middle column
+\def\eqnarray{\stepcounter{equation}\let\@currentlabel=\theequation
+\global\@eqnswtrue
+\global\@eqcnt\z@\tabskip\mathindent\let\\=\@eqncr
+\abovedisplayskip\topsep\ifvmode\advance\abovedisplayskip\partopsep\fi
+\belowdisplayskip\abovedisplayskip
+\belowdisplayshortskip\abovedisplayskip
+\abovedisplayshortskip\abovedisplayskip
+$$\m@th\halign
+to\linewidth\bgroup\@eqnsel\hskip\@centering$\displaystyle\tabskip\z@
+  {##}$&\global\@eqcnt\@ne\hfil${{}##{}}$\hfil
+  &\global\@eqcnt\tw@ $\displaystyle{##}$\hfil
+   \tabskip\@centering&\llap{##}\tabskip\z@\cr}
+
+\def\endeqnarray{\@@eqncr\egroup
+      \global\advance\c@equation\m@ne$$\global\@ignoretrue
+      }
+
+%% Size equivalances:
+%% \@setfontsize\normalsize\@xpt\@xiipt
+%% \@setfontsize\small\@ixpt{11}
+%% \@setfontsize\footnotesize\@viiipt{9.5}
+%% \@setfontsize\scriptsize\@viipt\@viiipt
+%%
+%% Redefined \Large:
+\renewcommand\Large{\@setfontsize\Large\@xivpt{16}}
+
+%% To use cmmi10 and cmmbi10 at any type size
+\DeclareFontShape{OML}{cmm}{m}{it}
+    { <-> cmmi10 }{}
+\DeclareFontShape{OML}{cmm}{b}{it}{%
+      <-> cmmib10 }{}
+\DeclareFontShape{OML}{cmm}{bx}{it}
+   {<->sub * cmm/b/it}{}
+
+%% To add cropmark images
+\newdimen\trimwidth\newdimen\trimheight
+	\trimheight=9in 
+	\trimwidth=6in
+\newif\ifimage 
+%	\imagetrue
+
+% Set default to not use cropmark images
+\imagefalse
+
+\def\ulimage{\hbox{\vrule height .5pt depth 0pt width 20pt%
+		\hskip 3.5pt%
+		\vrule height 20pt depth -4pt width .5pt}}
+
+\def\urimage{\hbox{\vrule height 20pt depth -4pt width .5pt
+		\hskip 3.5pt%
+		\vrule height .5pt depth 0pt width 20pt}}%
+
+\def\lrimage{\hbox{\vrule height -4pt depth 20pt width .5pt
+		\hskip 3.5pt%
+		\vrule height .5pt depth 0pt width 20pt}}%
+
+\def\llimage{\hbox{\vrule height .5pt depth 0pt width 20pt%
+		\hskip 3.5pt%
+		\vrule height -4pt depth 20pt width .5pt}}
+
+\def\imagemarks{\vbox to 0pt{%
+	\advance\trimwidth by 48pt\advance\trimheight by 20pt%
+	\hbox{\hskip-24pt%
+	\vbox to 0pt{\vskip -24pt%
+		\vbox to \trimheight{%
+		\hbox to \trimwidth{\ulimage\hss\urimage}%
+		\vss%
+		\hbox to \trimwidth{\llimage\hss\lrimage}%
+		}%
+	\vss}}}}
+
+%% Modified from latex.ltx to allow \imagemarks 
+\begingroup
+\obeylines\obeyspaces%
+\gdef\@resetactivechars{%
+\def^^M{\@activechar@info{EOL}\space}%
+\def {\@activechar@info{space}\space}}%
+\endgroup
+\def\@outputpage{%
+\begingroup           % the \endgroup is put in by \aftergroup
+  \let \protect \noexpand
+  \@resetactivechars
+  \@parboxrestore
+  \shipout \vbox{%
+    \set@typeset@protect
+    \aftergroup \endgroup
+    \aftergroup \set@typeset@protect
+  \if@specialpage
+    \global\@specialpagefalse\@nameuse{ps@\@specialstyle}%
+  \fi
+  \if@twoside
+    \ifodd\count\z@ \let\@thehead\@oddhead \let\@thefoot\@oddfoot
+         \let\@themargin\oddsidemargin
+    \else \let\@thehead\@evenhead
+       \let\@thefoot\@evenfoot \let\@themargin\evensidemargin
+    \fi
+  \fi
+  \reset@font
+  \normalsize
+  \baselineskip\z@skip \lineskip\z@skip \lineskiplimit\z@
+    \@begindvi
+\ifimage\imagemarks%% 
+	\else%%
+\vbox to 0pt{}%%
+	\fi%%
+\vskip \topmargin
+    \moveright\@themargin \vbox {%
+      \setbox\@tempboxa \vbox to\headheight{%
+        \vfil
+        \color@hbox
+          \normalcolor
+          \hb@xt@\textwidth {%
+            \let \label \@gobble
+            \let \index \@gobble
+            \let \glossary \@gobble %% 
+            \@thehead
+            }%
+        \color@endbox
+        }%                        %% 
+      \dp\@tempboxa \z@
+      \box\@tempboxa
+      \vskip \headsep
+      \box\@outputbox
+      \baselineskip \footskip
+      \color@hbox
+        \normalcolor
+        \hb@xt@\textwidth{%
+          \let \label \@gobble
+          \let \index \@gobble      %% 
+          \let \glossary \@gobble   %% 
+          \@thefoot
+          }%
+      \color@endbox
+      }%
+    }%
+\global \@colht \textheight
+\stepcounter{page}%
+\let\firstmark\botmark
+}
+
+% Define copyright symbol for footers.
+\DeclareMathSymbol{\mycopyright}{\mathrel}{symbols}{'375}
+
+%% To format the headers/footers
+\newcommand{\copyrightinfo}[4]{%
+\gdef\@volume{#1}
+\gdef\@year{#2}
+\gdef\@startpage{#3}
+\gdef\@endpage{#4}
+\setcounter{page}{\@startpage}
+}
+
+
+\newcommand{\@firstcopyrightfoot}{\hfil{\scriptsize
+\textit{Applied Statistics (MATH 7343) - Group Project}, 2021; Northeastern University\hfil}}\hfil}
+
+\newcommand{\@copyrightfooteven}{{\scriptsize
+\textit{Applied Statistics (MATH 7343) - Group Project}, 2021; Northeastern University\hfil}}\hfil}
+
+\newcommand{\@copyrightfootodd}{\hfil{\scriptsize
+\textit{Applied Statistics (MATH 7343) - Group Project}, 2021; Northeastern University\hfil}}}
+
+%% To format the title page and headers
+
+\def\ps@myheadings{%
+\let\@oddfoot\@copyrightfootodd\let\@evenfoot\@copyrightfooteven
+    \def\@evenhead{\footnotesize{\sffamily\bfseries\thepage}%
+\hfil\slshape\leftmark}%
+    \def\@oddhead{\footnotesize{\slshape\rightmark}\hfil%
+{\sffamily\bfseries\thepage}}%
+    \let\@mkboth\@gobbletwo
+    \let\sectionmark\@gobble
+    \let\subsectionmark\@gobble
+    }
+
+\pagestyle{myheadings}
+\def\ps@nofooters{%
+\let\@oddfoot\relax\let\@evenfoot\relax
+    \def\@evenhead{\footnotesize{\sffamily\bfseries\thepage}%
+\hfil\slshape\leftmark}%
+    \def\@oddhead{\footnotesize{\slshape\rightmark}\hfil%
+{\sffamily\bfseries\thepage}}%
+    \let\@mkboth\@gobbletwo
+    \let\sectionmark\@gobble
+    \let\subsectionmark\@gobble
+    }
+
+\def\ps@firstcopyfoot{\let\@mkboth\@gobbletwo
+\let\@oddhead\@empty
+\let\@oddfoot\@firstcopyrightfoot
+\let\@evenhead\@empty
+\let\@evenfoot\@oddfoot}
+
+%% Null definition in case there is no \markboth in the document
+\def\@authmark{}
+
+\def\markboth#1#2{\gdef\@themark{{#1}{#2}}%
+\addcontentsline{toc}{title}{\@title\ #1}%
+{\let\protect\@unexpandable@protect
+\let\label\relax \let\index\relax \let\glossary\relax
+\mark{\@themark}}\if@nobreak\ifvmode\nobreak\fi\fi}
+
+%% To make a blank line in the tabular environment that formats \author{}. 
+\renewcommand{\and}{\enspace\\{}}
+
+\def\@maketitle{%
+  \newpage
+  \null
+\vspace*{-10pt}
+{\parskip0pt\parindent0pt \let \footnote \thanks
+  \begin{raggedright}%
+  {\Large\mathversion{bold}\bfseries \@title \par}%
+  \end{raggedright}%
+  \vskip 24pt%
+    {\small\lineskip=11pt% 
+      \begin{tabular}[t]{@{}l}%
+        \@author
+      \end{tabular}}\par%
+\vskip8pt}
+}
+
+\renewcommand\maketitle{\par
+  \begingroup
+    \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+    \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
+    \long\def\@makefntext##1{\parindent 1em\noindent
+            \hb@xt@1.8em{%
+                \hss\@textsuperscript{\normalfont\@thefnmark}}##1}%
+    \if@twocolumn
+      \ifnum \col@number=\@ne
+        \@maketitle
+      \else
+        \twocolumn[\@maketitle]%
+      \fi
+    \else
+      \newpage
+      \global\@topnum\z@   % Prevents figures from going at top of first page.
+      \@maketitle
+    \fi
+    \thispagestyle{firstcopyfoot}\@thanks
+  \endgroup
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+  \global\let\@date\@empty
+  \global\let\@title\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+}
+
+\newcommand{\authname}[1]{{\footnotesize\sffamily\bfseries #1}}
+\newcommand{\authadd}[1]{{\small\rmfamily\itshape #1}}
+
+%% Re-defining the abstract environment
+\newif\ifafterabstract
+\global\afterabstractfalse
+
+\renewenvironment{abstract}{%
+\small\parskip0pt\leftskip = 2pc%
+\advance\leftmargin2pc
+\noindent\rule{23.5pc}{.5pt}\break
+}
+{\par\nointerlineskip\vskip4pt\noindent\rule{23.5pc}{.5pt}\par
+\global\afterabstracttrue
+\everypar={\global\afterabstractfalse\everypar{}}\nointerlineskip
+}
+
+% Keywords environment
+\newenvironment{keywords}{%
+\small\parskip0pt\leftskip = 2pc\vskip12pt%
+\advance\leftmargin2pc
+\noindent\textit{Keywords}:\ \ignorespaces}
+{\par\nointerlineskip
+}
+
+
+%% Suppress paragraph indent after all headings
+\@afterindentfalse
+
+%% Customizing the \section, \subsection, \subsubsection headings
+
+\renewcommand\section{\parskip0pt%
+\ifdim\lastskip>0pt\vskip-\lastskip\fi
+\ifafterabstract\global\afterabstractfalse\vskip36pt
+\else\vskip16pt plus 4pt minus 2pt\fi%
+\secdef\@numberedsection\@unnumberedsection}
+
+\newbox\sectionbox
+\newdimen\sectionhtdp
+	
+\def\@numberedsection[#1]#2{%
+    \ifnum \c@secnumdepth >1\relax
+      \refstepcounter{section}%
+    \fi
+    {\parindent \z@ \hangindent=24pt\hangafter=0\raggedright
+     \interlinepenalty \@M
+     \small\mathversion{bold}\sffamily\bfseries
+     \ifnum \c@secnumdepth >2\relax%
+       \leavevmode\llap{\hbox to \hangindent{\hfil\thesection.\enspace}}%
+\setbox\sectionbox=\vbox{\hsize=23.5pc #2\hrule height 0pt width 0pt depth 4pt}%
+\sectionhtdp=\dp\sectionbox\advance\sectionhtdp\ht\sectionbox%
+\else
+\setbox\sectionbox=\vbox{\hsize=24.5pc #2\hrule height 0pt width 0pt depth 4pt}%
+\sectionhtdp=\dp\sectionbox\advance\sectionhtdp\ht\sectionbox%
+\fi%
+	#2\par\nointerlineskip\nobreak%
+\vskip4pt\smash{\rule{3pt}{\sectionhtdp}\rule{25.25pc}{.5pt}}}\par%
+    \nobreak
+    \vskip 4pt
+    \@afterheading}
+
+\def\@unnumberedsection#1{%
+    {\parindent \z@ \raggedright\hangindent=12pt\hangafter=0
+     \interlinepenalty \@M
+     \small\mathversion{bold}\sffamily\bfseries 
+\setbox\sectionbox=\vbox{\hsize=24.5pc #1\hrule height 0pt width 0pt depth 4pt}%
+\sectionhtdp=\dp\sectionbox\advance\sectionhtdp\ht\sectionbox%
+#1\par\nointerlineskip\nobreak%
+\vskip4pt\smash{\rule{3pt}{\sectionhtdp}\rule{25.25pc}{.5pt}}}\par%
+     \nobreak
+     \vskip 4pt
+     \@afterheading}
+
+\renewcommand\subsection{\parskip0pt%
+\ifdim\lastskip>0pt\vskip-\lastskip\fi
+\vskip 16pt plus 4pt minus 2pt
+\secdef\@numberedsubsection\@unnumberedsubsection}
+
+\def\@numberedsubsection[#1]#2{%
+    \ifnum \c@secnumdepth >2\relax
+      \refstepcounter{subsection}%
+    \fi
+    {\parindent \z@ \hangindent=24pt\hangafter=0\raggedright
+     \interlinepenalty \@M
+     \footnotesize\mathversion{bold}\sffamily\bfseries
+     \ifnum \c@secnumdepth >2\relax
+\leavevmode\llap{\hbox to \hangindent{\hfil\thesubsection\enspace}}%
+\setbox\sectionbox=\vbox{\hsize=23.5pc #2\hrule height 0pt width 0pt depth 2pt}%
+\sectionhtdp=\dp\sectionbox\advance\sectionhtdp\ht\sectionbox%
+\else
+\setbox\sectionbox=\vbox{\hsize=24.5pc #2\hrule height 0pt width 0pt depth 2pt}%
+\fi%
+	#2\par\nointerlineskip\nobreak%
+\smash{\rule{3pt}{\ht\sectionbox}}}\par%
+    \nobreak
+    \vskip 4pt
+    \@afterheading}
+
+\def\@unnumberedsubsection#1{%
+    {\parindent \z@ \raggedright\hangindent=12pt\hangafter=0
+     \interlinepenalty \@M \footnotesize\mathversion{bold}\sffamily\bfseries 
+\setbox\sectionbox=\vbox{\hsize=24.5pc #1\hrule height 0pt width 0pt depth 2pt}%
+\sectionhtdp=\dp\sectionbox\advance\sectionhtdp\ht\sectionbox%
+#1\par\nointerlineskip\nobreak%
+\smash{\rule{3pt}{\ht\sectionbox}}}%
+     \nobreak
+     \vskip 4pt
+     \@afterheading}
+
+\renewcommand\subsubsection{\parskip0pt%
+\ifdim\lastskip>0pt\vskip-\lastskip\fi
+\vskip 12pt plus 2pt minus 2pt
+\secdef\@numberedsubsubsection\@unnumberedsubsubsection}
+
+\def\@numberedsubsubsection[#1]#2{%
+    \ifnum \c@secnumdepth >2\relax
+      \refstepcounter{subsubsection}%
+\else
+    \fi
+    {\parindent \z@ \raggedright
+     \interlinepenalty \@M
+     \footnotesize\mathversion{bold}\sffamily\bfseries
+     \ifnum \c@secnumdepth >2\relax
+\setbox\sectionbox=\hbox{\thesubsubsection\enspace}
+\hangindent=\wd\sectionbox\hangafter=1
+\leavevmode\thesubsubsection\enspace%
+\fi%
+	#2\par\nointerlineskip\nobreak%
+}
+    \vskip 4pt
+    \@afterheading}
+
+\def\@unnumberedsubsubsection#1{%
+    {\parindent \z@ \raggedright
+     \interlinepenalty \@M \footnotesize\mathversion{bold}\sffamily\bfseries 
+#1\par\nointerlineskip\nobreak}%
+     \vskip 4pt
+     \@afterheading}
+
+\renewcommand\appendix{%
+\global\@topnum\z@
+\ifdim\lastskip>0pt\vskip-\lastskip\fi
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \renewcommand\thesection{\@Alph\c@section}
+  \renewcommand{\theequation}{\thesection.\arabic{equation}}
+  \setcounter{equation}{0}
+\vskip16pt plus 4pt minus 2pt
+\noindent{\small\sffamily\bfseries\appendixname}
+\nobreak}
+
+%% Re-defined so all newtheorems are in the normal font
+\def\@begintheorem#1#2{\trivlist\normalfont
+   \item[\hskip \labelsep
+{\footnotesize\sffamily\bfseries #1\quad #2.\kern4pt}]\ignorespaces}
+
+\def\@opargbegintheorem#1#2#3{\trivlist\normalfont
+      \item[\hskip \labelsep{\footnotesize\sffamily\bfseries #1\ #2\ (#3)}]}
+
+%% Making some pre-built theorem-like environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{example}{Example}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+
+\def\proof{%
+\ifdim\lastskip>0pt\vskip-\lastskip\fi
+\vspace{.5\baselineskip}\noindent{\sl Proof}.\enspace\ignorespaces}
+
+\def\qed{\hbox{\vrule height .5em width .5em depth 0em}}
+
+\def\endproof{\ignorespaces\ \nobreak$\square$\par\vskip.5\baselineskip}
+
+%% List customizations
+
+\renewcommand\labelitemi{\rule[.5ex]{.3em}{.3em}}
+
+\def\list#1#2{\ifnum \@listdepth >5\relax \@toodeep
+     \else \global\advance\@listdepth\@ne \fi
+  \rightmargin \z@ \listparindent\z@ \itemindent\z@
+  \csname @list\romannumeral\the\@listdepth\endcsname
+  \def\@itemlabel{#1}\let\makelabel\@mklab \@nmbrlistfalse #2\relax
+  \@trivlist\small
+  \parskip\parsep \parindent\listparindent
+  \advance\linewidth -\rightmargin \advance\linewidth -\leftmargin
+  \advance\@totalleftmargin \leftmargin
+  \parshape \@ne \@totalleftmargin \linewidth
+  \ignorespaces}
+
+%% Table/Figure captions
+\setlength\abovecaptionskip{8pt}
+\setlength\belowcaptionskip{0pt}
+
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{{\footnotesize\sffamily\bfseries #1.}\ \small #2}%
+  \ifdim \wd\@tempboxa >\hsize
+    {\footnotesize\sffamily\bfseries #1.}\ {\small #2}\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+
+%% These are for fixing some characters if wrisym.sty is used.
+%% Commented out for general distribution.
+%% \DeclareMathSymbol{\rightarrowleftarrow}{\mathrel}{symbols}{'373}
+%% \DeclareMathSymbol{\leftarrowrightarrow}{\mathrel}{symbols}{'374}
+%% \DeclareMathSymbol{\leftrightarrow}{\mathrel}{symbols}{'044}
+
+\def\newc#1{{\setbox\z@\hbox{#1}\ifdim\ht\z@=1ex\accent'010 #1%
+  \else\ooalign{\unhbox\z@\crcr\hidewidth\char'010\hidewidth}\fi}}
+
+\def\newu#1{{\setbox\z@\hbox{#1}\ifdim\ht\z@=1ex\accent'025 #1%
+  \else\ooalign{\unhbox\z@\crcr\hidewidth\char'025\hidewidth}\fi}}
+
+\def\newss{\char'031}
+\let\ss\newss
+
+\def\circleR{\textrm{\char'256}}
+\let\regtm\circleR
+
+\def\circleC{\textrm{\char'251}}
+\let\copyrightsymbol\circleC
+
+\def\degreesymbol{\textrm{\char'260}}
+
+%% Using cmex for under/overbrace
+
+\DeclareSymbolFont{largesymbolscm}{OMX}{cmex}{m}{n}
+
+\DeclareMathSymbol{\braceld}{\mathord}{largesymbolscm}{"7A}
+\DeclareMathSymbol{\bracerd}{\mathord}{largesymbolscm}{"7B}
+\DeclareMathSymbol{\bracelu}{\mathord}{largesymbolscm}{"7C}
+\DeclareMathSymbol{\braceru}{\mathord}{largesymbolscm}{"7D}
+
+\def\downbracefill{$\m@th \setbox\z@\hbox{$\braceld$}%
+  \braceld\leaders\vrule \@height\ht\z@ \@depth\z@\hfill\braceru
+  \bracelu\leaders\vrule \@height\ht\z@ \@depth\z@\hfill\bracerd$}
+\def\upbracefill{$\m@th \setbox\z@\hbox{$\braceld$}%
+  \bracelu\leaders\vrule \@height\ht\z@ \@depth\z@\hfill\bracerd
+  \braceld\leaders\vrule \@height\ht\z@ \@depth\z@\hfill\braceru$}
+
+
+
+
+% complex-systems.sty is the macro package for Complex Systems.
+% It is available at
+% http://www.complex-systems.com/samples/complex-systems.sty
+% epsf.sty is the preferred graphics import method
+
+\begin{document}
+
+\title{Crimes of Passion: Are Boston Area Sports Team Losses Linked to Higher Crime Incidence?% 
+% Use \\ to indicate line breaks in titles longer than about 
+% 55 characters. 
+%
+}
+
+\author{\authname{Paul Lagarde}\\ 
+\authname{Huynh Nguyen}\\
+\authname{Anjali Patel}\\
+\authname{Sai Nikhil Thirandas}\\
+\authadd{Department of Mathematics, Northeastern University}\\
+\authadd{360 Huntington Ave.}\\
+\authadd{Boston, MA 02115, United States of America}
+% Do not use a ''.'' at the end of any line in the address. 
+}
+
+% The following specifies the running headings 
+%
+% Each running heading should be less than about 50 characters long. 
+% If necessary, give a shortened version of the title. 
+%
+% Use initials for first and second names. If all author names do not fit, truncate the 
+% list and end with ``et al.''.
+\markboth{Applied Statistics}
+
+\maketitle
+% End title section
+
+\begin{abstract}
+
+It is widely accepted that Bostonians are passionate about the success or failure of the professional sports teams in the greater Boston area. Likewise, given the proliferation of movies placed in Boston portraying the city's jarring history of organized crime, Boston has come to be defined in the American consciousness by Whitey Bulger as much as by William Blackstone. This paper utilizes Boston's exhaustive public safety data and 8 years of win-loss records in Boston-area professional sports teams to determine if any link between the passion of Beantown's fans and the violence of the greater Boston area exists by determining if days on which a Boston sports team loses a game is associated with abnormally high crime incidence.
+\end{abstract}
+
+% The text of the paper follows. All of the text should be in the same file. 
+% Use separate files for large tabular material and graphics.
+
+\section{Introduction}
+\label{intro}
+% \label is a hyperlink target for cross-referencing to this section using \ref{intro} (optional).
+
+Home to the 9-time World Series Champion Red Sox, 6-time Super Bowl Champion Patriots, 17-time NBA Champion Celtics, and 6-time Stanley Cup Champion Bruins, Boston is widely recognized as an exemplary city in which to be a sports fan. The success of Boston sports teams is matched by the passion of Boston fans. The Red Sox, Patriots, Celtics, and Bruins, between 2012 and 2020, had attendances ranging between 94\% and 102\%. The Red Sox and Patriot's fan bases are viewed as two of the most loyal in all of American sports, and the Red Sox rivalry with the New York Yankees is viewed as the most intense in North American sports, with frequent outbursts of petty violence at Boston-New York postseason games, culminating in the viral instance of a Boston fan throwing a baseball at Giancarlo Stanton's head after a home run in the 2020 post season. Widely, Boston is viewed as home to passionate fans who are used to their teams winning games. \newline
+
+Another dominant narrative in the American cultural conception of Boston is its deep ties to crime families that often lead to consistently violent neighborhoods. This can be seen in acclaimed cinematic representations of Boston: Gone Girl, The Departed, Boondock Saints, The Town, The Fighter, and Goodwill Hunting all portray violence -- with varying levels of severity and organization -- as a normal part of life in Beantown. \newline
+
+Given that Boston is known both as a city of passionate fans who expect their teams to win games and a city of passionate people who are comfortable with extrajudicial displays of emotion, this paper examines the possibility of a connection between the sports that so evokes passion in Bostonians and how American culture writ large expects Bostonians to express said passion. \newline
+
+\section{Objectives}
+Specifically, in this paper, we determine if there exist any associations between a loss by any of Boston's four professional sports teams and higher crime incidence on the day of the loss; quantifies that relationship if it exists; and, if such an association exists for more than one team, compares the strength of those associations to determine which is strongest. To carry out this analysis, for each individual team we will determine:
+
+\begin{enumerate}
+    \item if a $t$-test reveals that the mean crime rate on a day of a loss is higher than the mean crime rate on a day that the team either wins or does not compete
+    \item if logistic regression reveals a correlation between a loss and higher incidence of crime
+\end{enumerate} and to compare the strength of any associations, if needed, we will determine:
+\begin{enumerate}
+    \item if ANOVA reveals that the mean daily crime rate is invariant between all four sport's teams average losses;
+    \item if the correlation between any one team's losses and crime is higher than the other's.
+\end{enumerate}
+
+\section{Data Sources \& Treatment}
+To analyze crime frequency, we used data from the City of Boston's Crime Incident Reports, which contain information from 2012-2020. This data set contains a recording of each crime reported in Boston, including information such as the type of crime committed, its location, if it involved a shooting, and the like. We cleaned that data to simply include the total number of crimes committed per day. \newline 
+
+To track the performance of Boston area sports teams, we used data from four websites: baseball--, basketball-, football-, and hockey-reference.com. These data sets include information such as opponent, final score, win/loss streaks, and trivia (walk off wins/losses, ``buzzer beaters", etc.). We trimmed that data set to simply record on which days a team lost -- denoted with a 0 -- and on which days they either won or did not play -- denoted by a 1. \newline
+
+ Each data set has 2426 entries, which is sufficient size to assume normality. We treat each  sport's data set as independent of the others, and treat criminal frequency on days on which a team loses as independent of crime frequency when that team wins or does not compete. \newline
+
+Despite available data for 2020, we only analyzed data from 2012-2019 due to twin \textit{sui generis} occurrences: the COVID-19 pandemic interrupting or prematurely ending many professional sport's teams 2019-2020 seasons; and the social conflagration in response to ongoing police brutality in the United States distorting crime-reporting data in the summer of 2020.
+
+\section{Analysis \& Results}
+Next, we present our findings. We first present a summary of each data set. Then, in all of our $t$-tests, we test $H_0: \mu_0 = \mu_1$ against $H_A: \mu_0 \neq \mu_1$, at a significance level $\alpha = 0.05$, where $\mu_0$ is the mean crime incidence on a day in which there is a team loss, and $\mu_1$ is the mean crime incidence on a day in which there is a team win or no contest. \newline
+
+For correlation testing, because our variable denoting the result of any contest is indicative, we will use logistic regression. Because a $0$ is a loss, a \textit{negative} correlation coefficient will indicate that a loss is associated with heightened crime frequency. In all four sports, we test for the existence of a correlation and then test $H_0: \hat{\alpha} = 0$ against $H_A: \hat{\alpha} \neq 0$ with $\alpha = 0.05$ to determine if any correlation discovered is statistically relevant.\textbf{\textit{full eqn here for logistic}} \newline 
+
+We begin by considering the results of these analyses on the Boston Bruins' data set: \textbf{\textit{i feel like we need more here.}} \
+\subsection{The Boston Bruins}
+We begin by taking a look at the basic data: 
+
+\begin{minted}[float,caption={The Boston Bruins - Statistics Data}, xleftmargin=-.15 \textwidth]{R}
+    vars  n     mean     sd    median  trimmed    mad   min  max  range  skew  kurtosis   se
+ X1   1   241  250.51   34.32    251    250.52   32.62  149  359   210   0.06   0.53      2.2
+ X2   1  2184  256.84   37.75    257    257.28   37.06   23  385   362  -0.25   0.93     0.81
+\end{minted}
+
+To test $H_0: \mu_0 = \mu_1$ against $H_A: \mu_0 \neq \mu_1$, w we produce a Two Sample $t$-test: \textit{\textbf{Elyna--why this test in particular?}}\\
+
+\textit{
+t = -2.6932, df = 308.12, p-value = 0.9963\\
+alternative hypothesis: true difference in means is greater than 0}. \\
+
+With a $p$-value $= .9963 > 0.05 = \alpha$, we fail to reject $H_0$; there is not sufficient evidence from this test to conclude that the Boston Bruins losing a hockey game is associated with abnormally high crime incidence. \\
+
+To be thorough, though, we will test for any correlation between Bruins losses and higher crime incidence using logistic analysis: \\
+
+\begin{minted}[float,caption={The Boston Bruins - Logistic Analysis} \textwidth]{R}
+Coefficients:
+                Estimate  Std. Error   z value  Pr(>|z|)
+(Intercept)     1.07506     0.45476     2.364    0.0181
+hockey$Crimes   0.00445     0.00179     2.486    0.0129
+\end{minted}
+
+With a coefficient of $0.00445$, the data indicates that the Boston Bruins losing a game is weakly associated with lower-than-normal crime rates. However, considering the validity of this result, we consider $H_0: \hat{\alpha} = 0$ against $H_A: \hat{\alpha} \neq 0$ with $\alpha = 0.05$: with a $p$-value of $0.0129$, we have $\alpha < p$ and reject $H_0$, concluding that that correlation is statistically relevant. 
+
+\subsection{The Boston Celtics}
+We begin by taking a look at the basic data: 
+
+\begin{minted}[float,caption={The Boston Celtics - Statistics Data}, xleftmargin=-.15 \textwidth]{R}
+     vars   n    mean    sd   median   trimmed   mad   min  max  range   skew  kurtosis   se
+ X1   1    273  242.47  36.73   241    241.94   35.58  141  354   213    0.14    0.02    2.22
+ X2   1   2152  257.95  37.19   259    258.37   35.58   23  385   362   -0.26    1.11     0.8
+\end{minted}
+
+To test $H_0: \mu_0 = \mu_1$ against $H_A: \mu_0 \neq \mu_1$, w we produce a Two Sample $t$-test: \textit{\textbf{Elyna--why this test in particular?}}\\
+
+\textit{
+t = -6.553, df = 346.63, p-value = 1\\
+alternative hypothesis: true difference in means is greater than 0}. \\
+
+With a $p$-value $= 1 > 0.05 = \alpha$, we (emphatically) fail to reject $H_0$; there is not sufficient evidence from this test to conclude that the Boston Celtics losing a basketball game is associated with abnormally high crime incidence. \\
+
+Considering logistic analysis, we see: 
+
+\begin{minted}[float,caption={The Boston Celtics - Logistic Analysis} \textwidth]{R}
+Coefficients:
+                    Estimate  Std. Error  z value   Pr(>|z|)
+(Intercept)        -0.651375   0.423207   -1.539     0.124
+basketball$Crimes   0.010848   0.001709    6.349    2.17E-10
+\end{minted}
+
+
+With a coefficient of $0.010848$, the data indicates very  that the Boston Celtics losing a game is weakly associated with lower-than-normal crime rates. However, considering the validity of this result, we consider $H_0: \hat{\alpha} = 0$ against $H_A: \hat{\alpha} \neq 0$ with $\alpha = 0.05$: with a $p$-value of $2.17\times10^{-10}$, we have $\alpha < p$ and reject $H_0$, concluding that that correlation is statistically relevant. 
+
+\subsection{The Boston Red Sox}
+We begin by taking a look at the basic data: 
+
+\begin{minted}[float,caption={The Boston Red Sox - Statistics Data}, xleftmargin=-.15 \textwidth]{R}
+     vars  n    mean    sd   median  trimmed   mad   min  max range  skew  kurtosis   se
+ X1   1   538  266.12  33.57  266     265.93  32.62  180  381  201   0.07   -0.1     1.45  
+ X2   1   1887 253.38  38.02  253     253.8   37.06   23  385  362  -0.23     1      0.88
+\end{minted}
+
+To test $H_0: \mu_0 = \mu_1$ against $H_A: \mu_0 \neq \mu_1$, w we produce a Two Sample $t$-test:\\
+
+\textit{
+t = 7.531, df = 964.84, p-value = $5.775\times10^{-14}$
+alternative hypothesis: true difference in means is greater than 0}. \\
+
+With a $p$-value $5.775\times10^{-14} < 0.05 = \alpha$, we reject $H_0$; for the first time, we have a data set supporting the claim that there is an association between a Red Sox loss and higher incidence of crime. \\
+
+Considering a logistic analysis, we have:  \\
+
+\begin{minted}[float,caption={The Boston Red Sox - Logistic Analysis} \textwidth]{R}
+Coefficients:
+                   Estimate   Std. Error  z value    Pr(>|z|)
+(Intercept)        3.711399    0.364067    10.19      2E-16
+baseball$Crimes   -0.009455    0.001370    -6.90      2E-12
+\end{minted}
+
+
+With a coefficient of $-0.009455$, the data indicates that the Boston Red Sox losing a game is weakly associated with higher-than-normal crime rates. However, considering the validity of this result, we consider $H_0: \hat{\alpha} = 0$ against $H_A: \hat{\alpha} \neq 0$ with $\alpha = 0.05$: with a $p$-value of $2\times10^{-12}$, we have $\alpha < p$ and reject $H_0$, concluding that that correlation is statistically relevant. 
+\subsection{The New England Patriots}
+
+We begin by taking a look at the basic data: 
+
+\begin{minted}[float,caption={The New England Patriots - Statistics Data}, xleftmargin=-.15 \textwidth]{R}
+     vars   n    mean    sd   median  trimmed   mad   min  max  range  skew  kurtosis   se
+ X1   1    30    228.7  37.79  219    224.58   35.58  174  324   150   0.92    0.3     6.9
+ X2   1   2395  256.55  37.33  257    256.94   37.06   23  385   362  -0.23   0.95    0.76
+\end{minted}
+
+To test $H_0: \mu_0 = \mu_1$ against $H_A: \mu_0 \neq \mu_1$, w we produce a Two Sample $t$-test:\\
+
+\textit{
+t = -4.0126, df = 29.713, p-value = 0.9998
+alternative hypothesis: true difference in means is greater than 0}. \\
+
+With a $p$-value $.9998 > 0.05 = \alpha$, we fail to reject $H_0$; there is not evidence to suggest that there is an increased incidence of crime due to a New England Patriots loss. \\
+
+Considering a logistic analysis, we have:  \\
+
+\begin{minted}[float,caption={The New England Patriots - Logistic Analysis} \textwidth]{R}
+Coefficients:
+                Estimate    Std. Error  z value  Pr(>|z|)
+(Intercept)      0.158425    0.989302    0.160     0.873
+football$Crimes  0.017331    0.004222    4.105    4.05E-5
+\end{minted}
+
+
+With a coefficient of $0.017331$, the data indicates that the New England Patriots losing a game is weakly associated with lower-than-normal crime rates. However, considering the validity of this result, we consider $H_0: \hat{\alpha} = 0$ against $H_A: \hat{\alpha} \neq 0$ with $\alpha = 0.05$: with a $p$-value of $4.05\times10^{-5}$, we have $\alpha < p$ and reject $H_0$, concluding that that correlation is statistically relevant. 
+
+\subsection{ANOVA}
+need to get the right labels, see how the variable is set up. 
+\section{Conclusions}
+Considering our original question: are losses by the Boston professional sports teams associated with higher-than-normal crime incidence? After analyzing how crime rates change -- or remain the same -- on days which each team loses, we can conclude that based on the logistic correlation and $t$-test, only Boston Red Sox losses are linked to an increase in expected crime. While the authors of this paper can always recommend attending Fenway Park to see the Sox play ball, they cannot in good conscience recommend enjoying the city after a Red Sox loss.
+
+\begin{thebibliography}{99}
+% The number of 9s indicate how many digits to allow for to align the indented list.
+i need to add these; i have them i am just lazy 
+\end{thebibliography}
+
+\end{document}
