@@ -1,25 +1,30 @@
 # Video lecture URLs and Passwords
 
-|Lecture No.| Topic | Video URL | Password |
-| --------- | ----- | --------- | -------- |
-| 1 | Introduction & Probability Theory | [Video Link](https://northeastern.zoom.us/rec/play/PT4IPq8lo7qKTMO_5ZBWH3r3LezW9iyAlqonMpPWCvcMQ72lJFl5izXKA2qKpgUjfynxdkaHx83XrPEr.A5CP8J8bIn8Wx8ir) | fA3aIQ#9 |
-| 2 | Probability Theory (contd.) & Random Variables | [Video Link](https://northeastern.zoom.us/rec/play/BMye_T4mihnoTRB42x1lRBP68pXahVgUnsmA-HNX5IrGV2K3_-v3SbkJobLfxGoUX8zuSI0j8ADbC3Ui.Jbl_alR7oHxLmoc3) | &Lez0i44 |
-| 3 | Parameter Estimation | [Video Link](https://northeastern.zoom.us/rec/play/10HTmYrpJiYYLqIegaicnxoa4wf2kv9CYyve-BY9H_kTze1bn-VTac6Q4YzaZdlQfSFt08wCv_dN9MnF.-LRy5256hOs2khwf) | 0S#2zSk? |
-| 4 | EM Algorithm | [Video Link](https://northeastern.zoom.us/rec/play/k_Pgm4RqABEUEcztcZOMJWFhiWaKue2QVu8pL1WC8w067rwXrj-Au4sFM8xid11mg3YagWPHgJTnqwgz.I_RMjPgn0qd7ju9W) | YAzeM1.T |
-| 5 | Prediction Problems | [Video Link](https://northeastern.zoom.us/rec/play/hxe2u0LYu8A_q-OpVkcEknV_sJN0Kq1XL7lgrSqJ9uRg2n9uKCdj8vsf1rRVC70GHjBKOMZzZlDmbgZz.k0y4Z1dgfLA-KAdD) | &y%K4\*Ft |
-| 6 | Preidiction (contd.), Bias-Variance Tradeoff & Naive Bayes models | [Video Link](https://northeastern.zoom.us/rec/play/k7_j7mPZTd8fAgC7TgQ1J-YYx8QZ3L5FIbgCpiTGIVJP5T9oeS40OmyYdmKX387YhniYKWZFKLT90Pn0.gGqT2udXifxhazm6) | 95Ji!BsR |
-| 7 | Linear Regression | [Video Link](https://northeastern.zoom.us/rec/play/FG7XOnSnMKyMhgsZMNb4Kz8nRbnJD_bR7wt-XK7XEG-pqf7muuM73ZDmisbWWUJDSa70GojgFyiqCnk-.NzW5g1ssZ5RFN9Fb) | UznnS84# |
-| 8 | Linear Regression for nonlinear problems | [Video Link](https://northeastern.zoom.us/rec/play/FpzWqiVyPiL4AYhL5ofp1Hz5WwXUlbzt5gLeQz-of92sMYObDwO9u3x4bLOp5TFqiku4wPfwSbf6Mc7m.6M7aGS48HaYmIECJ) | !Sk94\*K. |
-| 9 | Performance of Regression models & Optimization | [Video Link](https://northeastern.zoom.us/rec/play/aZ-FmgSphd5fb2hDez5xdtKCb3Sx8zORYBMMbsBLOQ8zEo06dIbaMOelVo1EYMU5tfC5BXX8Yowd8YK4.iedWC_d6wsO_UBz-) | 3=2N.i#o |
-| 10 | Optimization (contd.) & Perceptron | [Video Link](https://northeastern.zoom.us/rec/play/PpXT8fSWzxSsHqHBtVwYD7uCA4T7oentzLhrpjR-ihv_F6T7p2RwJ8ZJDgcUEolVgGeXuano0KIT8lOB.7NBRa7Ui9FroeWWd) | 8MOF=Kdi |
-| 11 | Perceptron (contd.) & Logistic Regression | [Video Link](https://northeastern.zoom.us/rec/play/EHdHEFHzIdE6HxXNE_7DVy8dly3iJtQb5-HpeJ58BpSjL0YMVd-DnEg4yVTMe4uRPaZNhFRRMxr6SuTS.d3DJMsK4yANVRtb6) | R^v^kkN7 |
-| 12 | Logistic Regression (contd.) & Generalized linear models | [Video Link](https://northeastern.zoom.us/rec/play/iMzsCJgk_ZxXdlU_aoIgwihwM2V48Zt732T4-kA6yTgOHe8NYboGIju92Mfw8sj7odfFpzyAQ3lr8VZj.u19RRepvLSTt0gHY) | 9^D83.WA |
-| 13 | Clustering | [Video Link](https://northeastern.zoom.us/rec/play/9TctLX2qX4ob7VuQpGfPHxqqoQrOyEIJ5tvLaTb-CrTuu0yze2vKAExRGGj3VC8-qaR922KdaVdriFXA.8IFksscmUYTzJd-I) | h7zN#O\*V |
-| 14 | Data Mining: Data | [Video Link](https://northeastern.zoom.us/rec/play/5y7SVrrOOmHlTQHN-DsQjTKM4BIM796XqK_BLWE9l2N_MtlxAGoCwH_M0mplyeHu0-qgMl7sHWeiOyC4.vlhzwCs-6uncvAin) | Cnb4Q#E1 |
-| 15 | Midterm paper discussion, Grading & Data Mining: Data (contd.) | [Video Link](https://northeastern.zoom.us/rec/play/hSoNUQJIu8BOVbgSdYaUV123g0Dv6XQJzpcmyIt6h33MZdtH6aee1DjZFYA3i7fhfDsVzEPYzWK_u7mh.SS3ZeNWmAh2VZ6rN) | b\*fh.2ic |
-| 16 | Neural Networks | [Video Link](https://northeastern.zoom.us/rec/play/I6_5K95IcUoC0_7RKC8TzwqwkjgRo-I4WcMP24dEvcZ5Sb3CMbu01A_2SwgzwGdM55XP0IJObIyQdF5u._fmUrXotVAQMqtMr) | =dFk94=p |
-| 17 | Convolutional Neural Networks & Deep Neural Networks | [Video Link](https://northeastern.zoom.us/rec/play/mEYLk6p_QvlpY3usWeQnAvn3Kctb1lQvDtEv_RMl3WsQ60fixVfnSHiCldiJc9ZBBK-2SgQg_BFbAUKG.GIoHsWqPtnSXLiuY) | a7wKvq\*7 |
-| 18 | Performance Evaluation (1 dimensional & 2 dimensional plots, ROC, PR-RC Curve) | [Video Link](https://northeastern.zoom.us/rec/play/GZDzylN1Ajg1EEBghmYtcTa1icG-RDEFvZz06vX6NpoWx_8kL4NqHWwoiHwmoMDFAa8idwBUQ4JpkkVW.xuKMyv-PMBfIJH2L) | &D5LKB^q |
-| 19 | Performance Evaluation (contd.) (AUC Curve) | [Video Link](https://northeastern.zoom.us/rec/play/HaQQNhbIIg5YB5TBOyNvMr-mnCWjLRFhXSWdO0AhqVtNwwbhnyaB7ygXkg12xssTh62FeBeTxenG4ats.MOPwMkFQOSnUWhqY) | XMgm0.t^ |
-| 20 | Performance Evaluation (contd.) (Statistical Approach) & Decision Trees | [Video Link](https://northeastern.zoom.us/rec/play/HnPGJfyOGYrPIKEyUCrApEskowjFmwvKSQ77sMRjxrDahbXACeW3OKkourNvMQOBk1C072zB1oeOISAY.gLd5U8kl4N2eRt6j) | %%18xq#J |
-
+|Lecture No.| Topic |
+| --------- | ----- |
+| 1 | [Introduction & Probability Theory](https://drive.google.com/file/d/14HtaC9RX2g_0jaylyPhhNS4oGGK_IkB4/view?usp=sharing) |
+| 2 | [Probability Theory (contd.) & Random Variables](https://drive.google.com/file/d/1rEN16BqZn2j1zLRsQhAR13S3GMhKqP2P/view?usp=sharing) |
+| 3 | [Parameter Estimation](https://drive.google.com/file/d/1HmwwDc7u4P6SL864o5fRHjL4JowYtrI6/view?usp=sharing) |
+| 4 | [EM Algorithm](https://drive.google.com/file/d/1bcu1fKiPbOVgr5XAm8lAvrR_oPUm9gWZ/view?usp=sharing) |
+| 5 | [Prediction Problems](https://drive.google.com/file/d/1bs1bHCAdJYf5gUtnPt7zZ1B2H-MG1vu8/view?usp=sharing) |
+| 6 | [Preidiction (contd.), Bias-Variance Tradeoff & Naive Bayes models](https://drive.google.com/file/d/13JtZOMOYndmwtzP-3du3RF_z42GuSKss/view?usp=sharing) |
+| 7 | [Linear Regression](https://drive.google.com/file/d/1fSQrhUI4c2q0ZiNaY9S02X93fk3lR55l/view?usp=sharing) |
+| 8 | [Linear Regression for nonlinear problems](https://drive.google.com/file/d/1PF3QmX4OWa8hyMqRlARQ8mndWic0N5zv/view?usp=sharing) |
+| 9 | [Performance of Regression models & Optimization](https://drive.google.com/file/d/1SldqAJ975egfe_dBpxN67gOZuaYPlYrW/view?usp=sharing) |
+| 10 | [Optimization (contd.) & Perceptron](https://drive.google.com/file/d/13gLZ3p40BpWkT-zE_qWC-oXhlH5N9Fxw/view?usp=sharing) |
+| 11 | [Perceptron (contd.) & Logistic Regression]() |
+| 12 | [Logistic Regression (contd.) & Generalized linear models]() |
+| 13 | [Clustering]() |
+| 14 | [Data Mining: Data]() |
+| 15 | [Midterm paper discussion, Grading & Data Mining: Data (contd.)]() |
+| 16 | [Neural Networks](https://drive.google.com/file/d/1D_bz0H0OjbAVJoZdG3lrQ0eLoCd2oDKn/view?usp=sharing) |
+| 17 | [Convolutional Neural Networks & Deep Neural Networks](https://drive.google.com/file/d/1eVy1-iFHM3GXfCCBqx0nB1wkMMe_5S8v/view?usp=sharing) |
+| 18 | [Performance Evaluation (1 dimensional & 2 dimensional plots, ROC, PR-RC Curve)](https://drive.google.com/file/d/1hnU3y6D3uP-ESBFsPaYnNib8jJE7incq/view?usp=sharing) |
+| 19 | [Performance Evaluation (contd.) (AUC Curve)](https://drive.google.com/file/d/1HFGjrl3cptKt2MsjUq63e6yEQ4RiTVQV/view?usp=sharing) |
+| 20 | [Performance Evaluation (contd.) (Statistical Approach), Bootstrapping & Decision Trees](https://drive.google.com/file/d/1_5niqL8fCUz63ewF_BH5flgPtGHcuqSa/view?usp=sharing) |
+| 21 | [Decision Trees (contd.)](https://drive.google.com/file/d/1tdyCwH2qMDmATSU9Szef6fGMWYaXohu2/view?usp=sharing) |
+| 22 | [Decision Trees (contd.) & Committee Machines](https://drive.google.com/file/d/1WzpuFYJEikXxa_jUQ5o4yRPzI4QpVOQs/view?usp=sharing) |
+| 23 | [Committee Machines (contd.) & Principal Component Analysis](https://drive.google.com/file/d/10lbnxrgfd5wBWROAroec1N9-fN95aqqf/view?usp=sharing) |
+| 24 | [Support Vector Machines](https://drive.google.com/file/d/1pyBgWKlSQvzgZPBLvpEqo_Q9KBt0hdne/view?usp=sharing) |
+| 25 | [Support Vector Machines (contd.) & Kernel Machines on Strings & Graphs](https://drive.google.com/file/d/1E2sMyZla9KSz5_1qrqM3la2sUITYnGHd/view?usp=sharing) |
+| 26 | [Kernel Machines on Strings & Graphs (contd.)](https://drive.google.com/file/d/1quHVTx5fCdbQ7Qp4cQKbtnD2BF5EegRZ/view?usp=sharing) |
