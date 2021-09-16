@@ -1,0 +1,102 @@
+#Problem 1:
+# a) Scatter plot
+plot(hospital$los, hospital$expadm, main="Scatter plot between Average expense 
+per admission into a community hospital and Average length of stay",
+     xlab="Average length of stay", 
+     ylab="Average expense per admission into a community hospital ", pch=19)
+
+
+plot(hospital$salary, hospital$expadm, main="Scatter plot between 
+      Average expense per admission into a community hospital 
+      and Average salary per employee in 1982",
+     xlab="Average salary per employee in 1982", 
+     ylab="Average expense per admission into a community hospital ", pch=19)
+
+los.lm <- lm(expadm ~ los, data = hospital)
+summary(los.lm)
+1281.96+191.56*(6)
+
+new.dat <- data.frame(los=6)
+predict(los.lm, newdata = new.dat, interval = 'confidence')
+
+#e) plot of residual 
+
+plot(los.lm, which = 1)
+# Normal probability plot of the residuals.
+plot(los.lm, which = 2)
+
+#f). Multi reg model:
+losal.lm <- lm(expadm ~los + salary, data = hospital)
+summary(losal.lm)
+
+#h) Anova to test 2 models:
+anova(los.lm,losal.lm)
+
+
+
+
+
+
+#####################################################
+###### PROBLEM 2 ##########
+price1 <- Shopping$OldAccount #List of shopping price from the Old account
+price2 <- Shopping$NewAccount #List of shopping price from the new account
+
+diff <- price1 - price2
+Shopping <- cbind(Shopping, Diff = diff)
+
+
+wilcox.test(x = price1, y = price2, paired = TRUE, alternative = "greater")
+
+hist(diff, xlab = "Difference in price",
+     ylab = "Number of Item",
+     main = "Difference in price between 2 accounts")
+
+
+
+#########################################################
+###### PROBLEM 3 ######
+### input data ###
+
+forecast <- matrix(c(16,5,8,1),nrow=2)
+dimnames(forecast) <-list(MarTemp = c("Below normal","Above normal"),
+                          Phil.see.its.shadow = c("Yes","No"))
+
+forecast
+
+chisq <- chisq.test(forecast)
+
+chisq$observed
+
+chisq$expected
+
+chisq
+
+n1 <- 21
+p1 <- 16/n1
+n2 <- 9
+p2 <- 8/n2
+p <- (n1*p1 +n2*p2)/ (n1+n2)
+
+#Test statistics:
+z <- (p2 - p1)/(sqrt(p*(1-p)*((1/n1)+(1/n2))))
+z
+#p-value:
+2*pnorm(z,lower.tail = FALSE)
+
+########### PROBLEM 4######
+#Input data:
+nema <- data.frame(NumNematodes = factor(c(0,0,0,0,1000,1000,1000,1000,5000,5000,5000,5000,10000,10000,10000,10000)),
+                   SeedlingGrowth = c(10.8,9.1,13.5,9.2,11.1,11.1,8.2,11.3,5.4,4.6,7.4,5.0,5.8,5.3,3.2,7.5))
+aov.fit <- aov(SeedlingGrowth ~ NumNematodes, data = nema)
+summary(aov.fit)
+
+TukeyHSD(aov.fit, conf.level = 0.95)
+par(mar=c(2, 7, 2, 2))
+plot(TukeyHSD(aov.fit, conf.level=0.95), las=2)
+
+library(ggpubr)
+library(ggplot2)
+ggboxplot(nema, x = "NumNematodes", y = "SeedlingGrowth", 
+          order = c("0", "1000", "5000", "10000"),
+          ylab = "Growth rate of Seeds", xlab = "Number of Nematodes")
