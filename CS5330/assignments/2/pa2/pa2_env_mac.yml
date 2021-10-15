@@ -1,0 +1,12 @@
+name: cs5330_pa2
+channels:
+- defaults
+dependencies:
+- jupyter
+- matplotlib
+- pip
+- pytest
+- python=3.6
+- pyyaml
+- pip:
+  - opencv-python
