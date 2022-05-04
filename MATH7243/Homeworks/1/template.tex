@@ -1,0 +1,242 @@
+\documentclass[11pt]{amsart}
+\usepackage{txfonts}
+\usepackage{amsmath,amsthm,verbatim}
+\usepackage{amscd,amssymb}
+\usepackage[all]{xy} 
+\usepackage{graphicx,calrsfs} 
+\usepackage[colorlinks,plainpages,urlcolor=blue]{hyperref} 
+\usepackage{breakurl}
+\def\UrlBreaks{\do\/\do-}\usepackage{bbm}
+\usepackage{bbm}
+\usepackage{mathrsfs}
+\usepackage{xstring}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing,calc,shapes}
+\usepackage{mathtools}
+\usepackage{tcolorbox}
+\usepackage{wrapfig} 
+
+\setlength{\parskip}{0.1 in}
+\setlength{\parindent}{0pt}
+
+%\usepackage[utf8]{inputenc}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+   % backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+ \lstset{style=mystyle}
+
+
+
+\topmargin=0in
+\textwidth6.6in
+\textheight8.6in
+\oddsidemargin=-0.1in
+\evensidemargin=-0.1in
+
+\newtheorem{theorem}{Theorem} 
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+%\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{ex}[theorem]{Example}
+
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\kk}{\mathbbm{k}}
+\newcommand{\mm}{\mathbbm{m}}
+
+\newcommand{\vtheta}{\vec{\theta}}
+
+
+\newcommand{\va}{\vec{a}}
+\newcommand{\vb}{\vec{b}}
+\newcommand{\vc}{\vec{c}}
+\newcommand{\vd}{\vec{d}}
+\newcommand{\vh}{\vec{h}}
+\newcommand{\e}{\vec{e}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\Span}{\mathrm{Span}}
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\green}{\textcolor{green}}
+\newcommand{\ifif}{\textcolor{blue}{ if and only if }} 
+
+
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\coker}{coker}
+ \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Nul}{\mathrm{Nul}}
+\DeclareMathOperator{\Co}{\mathrm{Col}}
+\DeclareMathOperator{\Ro}{\mathrm{Row}}
+\DeclareMathOperator{\Ker}{\mathrm{Ker}}
+\DeclareMathOperator{\Ima}{\mathrm{Im}}
+\DeclareMathOperator{\dist}{\mathrm{dist}}
+\DeclareMathOperator{\proj}{\mathrm{proj}}
+\DeclareMathOperator{\refl}{\mathrm{ref}}
+\DeclareMathOperator{\sign}{\mathrm{sign}}
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\ef}{\textbf{ref}}
+\newcommand{\rref}{\textbf{rref}}
+
+\newcommand{\pdf}{\textbf{pdf }}
+\newcommand{\pmf}{\textbf{pmf }}
+\newcommand{\cdf}{\textbf{cdf }}
+
+\newcommand{\normalcdf}{\textbf{normalcdf}}
+\newcommand{\invNorm}{\textbf{invNorm}}
+\newcommand{\invT}{\textbf{invT}}
+\newcommand{\popdf}{\textbf{poissonpdf}}
+\newcommand{\pocdf}{\textbf{poissoncdf}}
+
+\DeclareMathOperator{\Var}{\mathrm{Var}}
+\DeclareMathOperator{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator{\Corr}{\mathrm{Corr}}
+
+\DeclareMathOperator{\Normal}{\mathrm{Normal}}
+
+ \pgfmathdeclarefunction{gauss}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+
+
+  
+ 
+
+\begin{document}
+ \noindent
+ 
+ %%%Black color
+ 
+ Math 7243 
+ 
+ \begin{center}
+  \textbf{Homework 1.  Matrix calculus: } 
+ \end{center}
+
+Using
+the denominator layout notation conventions.
+\ \\
+(One point each question except 4, 7,8 with 2 points each.)\\
+Problems 4,7,8 have longer calculations.
+  
+\textbf{Problem 1. } Assume $\vx\in \R^n$,  $A\in \R^{m\times n}$ and $\vb\in \R^m$. Let $f(\vx)=\vb^T A \vx$. Find  $\nabla f$. 
+
+\
+ 
+ 
+\textbf{Problem 2. } Assume $\vx\in \R^n$. Find $\dfrac{\partial \vx^T\vx}{\partial \vx}$.
+ 
+ \
+ 
+ 
+\textbf{Problem 3. } Assume $\vx$ and $\va\in \R^n$. Find $\dfrac{\partial \big(\vx^T\va\big)^2}{\partial \vx}$
+ 
+ 
+ \
+ 
+\textbf{Problem $4$.} Suppose $\vx: \R^n\to \R^m$ is a map  sending $\vz\in \R^n$ to  $\vx(\vz)\in \R^m$. Similarly, 
+suppose $\vy: \R^n\to \R^m$ and $A$ is an $m\times m$ constant matrix.
+Prove that $\dfrac{\partial \big(\vy^TA\vx\big)}{\partial \vz}=
+\dfrac{\partial \vy}{\partial \vz} A \vx+ \dfrac{\partial \vx}{\partial \vz} A^T \vy
+$ 
+ 
+\  
+ 
+\textbf{Problem 5.}  Suppose $A(x): \R\to \R^{n\times n}$ is a map from $\R$ to $\R^{n
+\times n}.$ 
+
+Show that if $A(x)$ is invertible, then $
+\dfrac{dA^{-1}}{dx}=-A^{-1} \dfrac{dA}{dx} A^{-1}
+$
+ 
+ 
+ \textbf{Problem 6. }
+ Let $\vx$ and $\beta\in \R^p$. Prove that 
+ $
+\dfrac{\partial \vx^T\beta}{\partial \vx}=\beta 
+  $
+ 
+ 
+  \textbf{Problem 7. Chain Rule.}
+ Assume that $Y$ is an $n$ vector but assume that $Y$ depends on $X$ and $X$ depends on
+some $Z \in \R^q$. Show that
+ $$
+ \dfrac{\partial  Y}{\partial Z}= 
+  \dfrac{\partial  X}{\partial Z}
+   \dfrac{\partial  Y}{\partial X}
+ $$
+ Does the order matter? 
+ 
+ Hint: This means that $X: \R^q\to \R^p$ and $Y: \R^p\to \R^n$.
+ 
+  \textbf{Problem 8. } Let $z:\R^p 
+  \to \R$ be a function that depends on $\vx\in \R^p$ and let $Y$ be a $n$-vector that depends on $\vx\in \R^p$. Prove that
+   $$
+ \dfrac{\partial  }{\partial \vx} (z Y)=z
+  \dfrac{\partial  Y}{\partial \vx}+
+   \dfrac{\partial z}{\partial \vx} Y^T
+ $$
+   
+  
+ 
+ 
+ 
+ 
+
+
+\end{document} 
+
+
+
+ 

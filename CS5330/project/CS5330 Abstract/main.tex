@@ -1,0 +1,128 @@
+% This version of CVPR template is provided by Ming-Ming Cheng.
+% Please leave an issue if you found a bug:
+% https://github.com/MCG-NKU/CVPR_Template.
+
+%\documentclass[review]{cvpr}
+\documentclass[final]{cvpr}
+
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Include other packages here, before hyperref.
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[pagebackref=true,breaklinks=true,colorlinks,bookmarks=false]{hyperref}
+
+
+\def\cvprPaperID{Sai Nikhil Thirandas and Alberto Ceballos-Arroyo \\ ceballosarroyo.a} % *** Enter the CVhttps://www.overleaf.com/project/61802ed697c7d5da60efc7e8PR Paper ID here
+\def\confYear{CVPR 2021}
+%\setcounter{page}{4321} % For final version only
+
+
+\begin{document}
+
+%%%%%%%%% TITLE
+\title{CS5330 project abstract: unsupervised domain adaptation for fine-grained action recognition in 1st-person instructional videos}
+
+\author{Sai Nikhil Thirandas\\
+Northeastern University\\
+360 Huntington Ave, Boston, MA 02115\\
+{\tt\small thirandas.s@northeastern.edu}
+% For a paper whose authors are all at the same institution,
+% omit the following lines up until the closing ``}''.
+% Additional authors and addresses can be added with ``\and'',
+% just like the second author.
+% To save space, use either the email address or home page, not both
+\and
+Alberto Mario Ceballos-Arroyo\\
+Northeastern University\\
+360 Huntington Ave, Boston, MA 02115\\
+{\tt\small ceballosarroyo.a@northeastern.edu}
+}
+
+\maketitle
+
+
+%%%%%%%%% ABSTRACT
+
+
+%%%%%%%%% BODY TEXT
+
+
+Today, instructional video data is abundant thanks to platforms such as YouTube and the research initiatives of various groups that have released massive annotated datasets \cite{Zhou2018-qz, Munro2020-ui}. By exploiting this information (which is often multimodal in nature), it is possible to do automated procedure learning (APL), which consists of automatically learning from data the sequence of steps required for executing an specific task \cite{Elhamifar2019-pi}.
+
+Various authors have approached this task with different learning strategies: some have focused on supervised learning, where it is assumed that a set of labels will be available for most or all videos \cite{Bakr2020-cf, Zhao2020-yl}, whereas others have employed weakly supervised or unsupervised approaches to exploit the underlying structure of instructional videos \cite{Wang2021-wk}. The latter are sometimes preferred since they require much less labelled data, which tends to be scarce \cite{Elhamifar2020-xz}.
+
+The above happens because, as opposed to general video processing tasks, APL requires fine-grained annotations: a procedure is comprised of ordered steps, which themselves should consist of at least one verb (action) and one noun (subject) \cite{Hussein2019-to}. This means that a significant amount of time must be spent in labelling videos. Nonetheless, APL has benefited from the availability of pre-trained video processing models such as Slowfast \cite{Feichtenhofer2018-nc} and I3D \cite{Carreira2017-qz}, which perform well as feature extractors despite being designed for other tasks, thus reducing computational and data requirements.
+
+More recently, unsupervised domain adaptation (UDA) has been explored as a solution to some of the data availability issues in APL \cite{Munro2020-ui}. The motivation here is that for some APL tasks in a given domain labelled data might not be available, but labelled datasets could exist in another domain where similar tasks are considered. Indeed, in UDA the goal is often to find features that generalize well from the source domain $S$ to the target domain $T$. This means that, for the purposes of training, the source domain input data $X^{(S)}$ and labels $Y^{(S)}$ are available, but for the target domain only the input data $X^{(T)}$ can be accessed.
+
+Many recent UDA approaches \cite{Munro2020-ui, Zhang2020-om} have been built upon the adversarial discriminative domain adaptation (ADDA) framework proposed by \cite{Tzeng2017-dw}, in which the goal is to minimize classification loss in $T$ while a generator tries to trick two discriminator models into believing some presented samples are from the opposite domain. By (potentially) sharing weights between the components of the architecture, they were able to improve the SOTA in various domain adaptation tasks for image classification.
+
+Various researchers have addressed UDA for video classification and action recognition. For instance, \cite{Sigurdsson2018-gk} proposed Charades-Ego, a dataset of paired first and third person videos of various (non-instructional) actions. They developed a triplet neural network that jointly learns to minimize the distance between paired first and third-person video segments while maximizing the distance between non-corresponding segments. Furthermore, their model learns to select informative video segments and effectively discards background content.
+
+Another representative example is the "Ego-Exo" framework \cite{Li2021-mf}, which is divided in two stages. The first is a traditional video pre-training on third-person video data using a 3D CNN model. Although this results in general-purpose video features it lacks some important first person related signals. In order to overcome this gap, as a second part, they carried out auxiliary first-person tasks such as classifying videos as third/first-person, detecting hands, and detecting objects with pre-trained models. They then carried out knowledge distillation by teaching new models to carry out the same tasks in first-person videos.
+
+
+Meanwhile, \cite{Munro2020-ui} released the EPIC-KITCHENS datasets, where different kitchens were considered to be domains. As part of their work, they applied multi-modal UDA using RGB and optical flow data. They trained a classifier and a generator-discriminator setup to maximize action classification accuracy while guessing whether a given video belonged to the RGB or optical flow modality. 
+%put all literature review here
+
+Despite the above, relatively few projects have focused on the domain shift between third and first-person (TFP) instructional videos. Unlike many domain shift setups for instructional video learning, where variations are partially related to context and background content \cite{Damen2020-az}, TFP UDA involves significant perspective changes. As such, addressing the domain shift between TFP instructional videos remains an open area of study. 
+
+One of the few available TFP datasets is Home Action Genome \cite{Rai2021-wg}, which consists of more than 300 hours of video belonging to 70 daily activities with fine-grained action labels. The videos were filmed simultaneously from third and first-person perspectives, and involve many situations where perspective and occlusion make UDA particularly challenging. Considering this opportunity, we propose exploring various existing UDA approaches on the Home Action Genome Dataset. Our end goal will be to attest whether UDA approaches which have worked for more general tasks are still useful for third-to-first-person UDA in instructional videos. As such, we expect to carry out the following steps:
+
+% \begin{itemize}
+%     \item Download the relevant data into Discovery and other relevant computing platforms: Alberto (week 1).
+%     \item Carry out an exploratory analysis of the Home Action Genome Dataset: Alberto (week 1).
+%     \item Explore several architectures for video feature extraction: Sai (week 1)
+%     \item Do a more extensive literature review of UDA approaches for video: Alberto and Sai (week 1 and 2).
+%     \item Write down results of the exploratory phase: Alberto (weeks 2 and 3).
+%     \item Adapt at least two existing UDA approaches to the TFP domain adaptation use-case: Alberto and Sai (weeks 2, 3, and 4).
+%     \item \textcolor{red}{Time permitting - Propose a novel UDA approach for TFP domain adaptation}: Alberto (week 4).
+%     \item Train the proposed UDA approaches on the Home Action Genome Dataset: Alberto and Sai (weeks 4 and 5).
+%     \item Carry out tests and organize results: Sai (weeks 5 and 6).
+%     \item Finish and deliver the manuscript: Alberto and Sai (weeks 6 and 7).
+% \end{itemize}
+
+\begin{tabular}{ |p{0.8cm}|p{1.1cm}|p{4.8cm}| }
+\hline
+\multicolumn{3}{|c|}{Task List} \\
+\hline
+Week & Person & Task\\
+\hline
+1 & Alberto & Download the relevant data into Discovery and other relevant computing platforms \\
+\hline
+1 & Sai & Explore several architectures for video feature extraction\\
+\hline
+1+2 & Alberto and Sai & Do a more extensive literature review of UDA approaches for video \\
+\hline
+2+3 & Alberto & Write down results of the exploratory phase\\
+\hline
+2+3+4 & Alberto and Sai & Adapt at least two existing UDA approaches to the TFP domain adaptation use-case\\
+\hline
+4 & Alberto & \textcolor{red}{Time permitting - Propose a novel UDA approach for TFP domain adaptation}\\
+\hline
+4+5 & Alberto and Sai & Train the proposed UDA approaches on the Home Action Genome Dataset\\
+\hline
+5+6 & Sai & Carry out tests and organize results\\
+\hline
+6+7 & Alberto and Sai & Finish and submit the manuscript\\
+\hline
+\end{tabular}
+\\
+
+For the above, we will exploit the available resources at Northeastern University's Discovery cluster as well as additional computing equipment from Alberto's research group. At this point, we believe that those options should be sufficient for the scope of our project. 
+
+
+
+{\small
+\bibliographystyle{ieee_fullname}
+\bibliography{egbib}
+}
+
+\end{document}

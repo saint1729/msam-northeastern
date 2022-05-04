@@ -1,0 +1,564 @@
+@String(PAMI  = {IEEE TPAMI})
+@String(IJCV  = {IJCV})
+@String(CVPR  = {CVPR})
+@String(ICCV  = {ICCV})
+@String(ECCV  = {ECCV})
+@String(NIPS  = {NeurIPS})
+@String(ICPR  = {ICPR})
+@String(BMVC  =	{BMVC})
+@String(TOG   = {ACM TOG})
+@String(TIP   = {IEEE TIP})
+@String(TVCG  = {IEEE TVCG})
+@String(TCSVT = {IEEE TCSVT})
+@String(TMM   =	{IEEE TMM})
+@String(ACMMM = {ACM MM})
+@String(ICME  =	{ICME})
+@String(ICASSP=	{ICASSP})
+@String(ICIP  = {ICIP})
+@String(ACCV  = {ACCV})
+@String(ICLR  = {ICLR})
+@String(IJCAI = {IJCAI})
+@String(PR = {PR})
+@String(AAAI = {AAAI})
+@String(CVPRW= {CVPRW})
+@String(CSVT = {IEEE TCSVT})
+
+
+
+@String(PAMI = {IEEE Trans. Pattern Anal. Mach. Intell.})
+@String(IJCV = {Int. J. Comput. Vis.})
+@String(CVPR= {IEEE Conf. Comput. Vis. Pattern Recog.})
+@String(ICCV= {Int. Conf. Comput. Vis.})
+@String(ECCV= {Eur. Conf. Comput. Vis.})
+@String(NIPS= {Adv. Neural Inform. Process. Syst.})
+@String(ICPR = {Int. Conf. Pattern Recog.})
+@String(BMVC= {Brit. Mach. Vis. Conf.})
+@String(TOG= {ACM Trans. Graph.})
+@String(TIP  = {IEEE Trans. Image Process.})
+@String(TVCG  = {IEEE Trans. Vis. Comput. Graph.})
+@String(TMM  = {IEEE Trans. Multimedia})
+@String(ACMMM= {ACM Int. Conf. Multimedia})
+@String(ICME = {Int. Conf. Multimedia and Expo})
+@String(ICASSP=	{ICASSP})
+@String(ICIP = {IEEE Int. Conf. Image Process.})
+@String(ACCV  = {ACCV})
+@String(ICLR = {Int. Conf. Learn. Represent.})
+@String(IJCAI = {IJCAI})
+@String(PR   = {Pattern Recognition})
+@String(AAAI = {AAAI})
+@String(CVPRW= {IEEE Conf. Comput. Vis. Pattern Recog. Worksh.})
+@String(CSVT = {IEEE Trans. Circuit Syst. Video Technol.})
+
+@String(SPL	= {IEEE Sign. Process. Letters})
+@String(VR   = {Vis. Res.})
+@String(JOV	 = {J. Vis.})
+@String(TVC  = {The Vis. Comput.})
+@String(JCST  = {J. Comput. Sci. Tech.})
+@String(CGF  = {Comput. Graph. Forum})
+@String(CVM = {Computational Visual Media})
+
+
+
+
+@INPROCEEDINGS{Tzeng2017-dw,
+  title           = "Adversarial Discriminative Domain Adaptation",
+  booktitle       = "2017 {IEEE} Conference on Computer Vision and Pattern
+                     Recognition ({CVPR})",
+  author          = "Tzeng, Eric and Hoffman, Judy and Saenko, Kate and
+                     Darrell, Trevor",
+  abstract        = "Adversarial learning methods are a promising approach to
+                     training robust deep networks, and can generate complex
+                     samples across diverse domains. They also can improve
+                     recognition despite the presence of domain shift or
+                     dataset bias: several adversarial approaches to
+                     unsupervised domain adaptation have recently been
+                     introduced, which reduce the difference between the
+                     training and test domain distributions and thus improve
+                     generalization performance. Prior generative approaches
+                     show compelling visualizations, but are not optimal on
+                     discriminative tasks and can be limited to smaller shifts.
+                     Prior discriminative approaches could handle larger domain
+                     shifts, but imposed tied weights on the model and did not
+                     exploit a GAN-based loss. We first outline a novel
+                     generalized framework for adversarial adaptation, which
+                     subsumes recent state-of-the-art approaches as special
+                     cases, and we use this generalized view to better relate
+                     the prior approaches. We propose a previously unexplored
+                     instance of our general framework which combines
+                     discriminative modeling, untied weight sharing, and a GAN
+                     loss, which we call Adversarial Discriminative Domain
+                     Adaptation (ADDA). We show that ADDA is more effective yet
+                     considerably simpler than competing domain-adversarial
+                     methods, and demonstrate the promise of our approach by
+                     exceeding state-of-the-art unsupervised adaptation results
+                     on standard cross-domain digit classification tasks and a
+                     new more difficult cross-modality object classification
+                     task.",
+  publisher       = "IEEE",
+  pages           = "2962--2971",
+  year            =  2017,
+  url             = "https://doi.ieeecomputersociety.org/10.1109/CVPR.2017.316",
+  copyright       = "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+  location        = "Honolulu, HI, USA"
+}
+
+
+@INPROCEEDINGS{Rai2021-wg,
+  title           = "Home Action Genome: Cooperative Compositional Action
+                     Understanding",
+  booktitle       = "{IEEE/CVF} Conference on Computer Vision and Pattern
+                     Recognition ({CVPR} 2021)",
+  author          = "Rai, Nishant and Chen, Haofeng and Ji, Jingwei and Desai,
+                     Rishi and Kozuka, Kazuki and Ishizaka, Shun and Adeli,
+                     Ehsan and Niebles, Juan Carlos",
+  abstract        = "Existing research on action recognition treats activities
+                     as monolithic events occurring in videos. Recently, the
+                     benefits of formulating actions as a combination of
+                     atomic-actions have shown promise in improving action
+                     understanding with the emergence of datasets containing
+                     such annotations, allowing us to learn representations
+                     capturing this information. However, there remains a lack
+                     of studies that extend action composition and leverage
+                     multiple viewpoints and multiple modalities of data for
+                     representation learning. To promote research in this
+                     direction, we introduce Home Action Genome (HOMAGE): a
+                     multi-view action dataset with multiple modalities and
+                     view-points supplemented with hierarchical activity and
+                     atomic action labels together with dense scene composition
+                     labels. Leveraging rich multi-modal and multi-view
+                     settings, we propose Cooperative Compositional Action
+                     Understanding (CCAU), a cooperative learning framework for
+                     hierarchical action recognition that is aware of
+                     compositional action elements. CCAU shows consistent
+                     performance improvements across all modalities.
+                     Furthermore, we demonstrate the utility of co-learning
+                     compositions in few-shot action recognition by achieving
+                     28.6\% mAP with just a single sample.",
+  month           =  may,
+  year            =  2021,
+  url             = "http://arxiv.org/abs/2105.05226",
+  location        = "Nashville, TN, USA"
+}
+
+@ARTICLE{Zhang2020-om,
+  title         = "Label Propagation with Augmented Anchors: A Simple
+                   {Semi-Supervised} Learning baseline for Unsupervised Domain
+                   Adaptation",
+  author        = "Zhang, Yabin and Deng, Bin and Jia, Kui and Zhang, Lei",
+  abstract      = "Motivated by the problem relatedness between unsupervised
+                   domain adaptation (UDA) and semi-supervised learning (SSL),
+                   many state-of-the-art UDA methods adopt SSL principles
+                   (e.g., the cluster assumption) as their learning
+                   ingredients. However, they tend to overlook the very
+                   domain-shift nature of UDA. In this work, we take a step
+                   further to study the proper extensions of SSL techniques for
+                   UDA. Taking the algorithm of label propagation (LP) as an
+                   example, we analyze the challenges of adopting LP to UDA and
+                   theoretically analyze the conditions of affinity
+                   graph/matrix construction in order to achieve better
+                   propagation of true labels to unlabeled instances. Our
+                   analysis suggests a new algorithm of Label Propagation with
+                   Augmented Anchors (A$^2$LP), which could potentially improve
+                   LP via generation of unlabeled virtual instances (i.e., the
+                   augmented anchors) with high-confidence label predictions.
+                   To make the proposed A$^2$LP useful for UDA, we propose
+                   empirical schemes to generate such virtual instances. The
+                   proposed schemes also tackle the domain-shift challenge of
+                   UDA by alternating between pseudo labeling via A$^2$LP and
+                   domain-invariant feature learning. Experiments show that
+                   such a simple SSL extension improves over representative UDA
+                   methods of domain-invariant feature learning, and could
+                   empower two state-of-the-art methods on benchmark UDA
+                   datasets. Our results show the value of further
+                   investigation on SSL techniques for UDA problems.",
+  month         =  jul,
+  year          =  2020,
+  url           = "http://arxiv.org/abs/2007.07695",
+  archivePrefix = "arXiv",
+  eprint        = "2007.07695",
+  primaryClass  = "cs.LG",
+  arxivid       = "2007.07695"
+}
+
+
+@ARTICLE{Munro2020-ui,
+  title         = "{Multi-Modal} Domain Adaptation for {Fine-Grained} Action
+                   Recognition",
+  author        = "Munro, Jonathan and Damen, Dima",
+  abstract      = "Fine-grained action recognition datasets exhibit
+                   environmental bias, where multiple video sequences are
+                   captured from a limited number of environments. Training a
+                   model in one environment and deploying in another results in
+                   a drop in performance due to an unavoidable domain shift.
+                   Unsupervised Domain Adaptation (UDA) approaches have
+                   frequently utilised adversarial training between the source
+                   and target domains. However, these approaches have not
+                   explored the multi-modal nature of video within each domain.
+                   In this work we exploit the correspondence of modalities as
+                   a self-supervised alignment approach for UDA in addition to
+                   adversarial alignment. We test our approach on three
+                   kitchens from our large-scale dataset, EPIC-Kitchens, using
+                   two modalities commonly employed for action recognition: RGB
+                   and Optical Flow. We show that multi-modal self-supervision
+                   alone improves the performance over source-only training by
+                   2.4\% on average. We then combine adversarial training with
+                   multi-modal self-supervision, showing that our approach
+                   outperforms other UDA methods by 3\%.",
+  month         =  jan,
+  year          =  2020,
+  url           = "http://arxiv.org/abs/2001.09691",
+  archivePrefix = "arXiv",
+  eprint        = "2001.09691",
+  primaryClass  = "cs.CV",
+  arxivid       = "2001.09691"
+}
+
+@ARTICLE{Carreira2017-qz,
+  title         = "Quo Vadis, Action Recognition? A New Model and the Kinetics
+                   Dataset",
+  author        = "Carreira, Joao and Zisserman, Andrew",
+  abstract      = "The paucity of videos in current action classification
+                   datasets (UCF-101 and HMDB-51) has made it difficult to
+                   identify good video architectures, as most methods obtain
+                   similar performance on existing small-scale benchmarks. This
+                   paper re-evaluates state-of-the-art architectures in light
+                   of the new Kinetics Human Action Video dataset. Kinetics has
+                   two orders of magnitude more data, with 400 human action
+                   classes and over 400 clips per class, and is collected from
+                   realistic, challenging YouTube videos. We provide an
+                   analysis on how current architectures fare on the task of
+                   action classification on this dataset and how much
+                   performance improves on the smaller benchmark datasets after
+                   pre-training on Kinetics. We also introduce a new Two-Stream
+                   Inflated 3D ConvNet (I3D) that is based on 2D ConvNet
+                   inflation: filters and pooling kernels of very deep image
+                   classification ConvNets are expanded into 3D, making it
+                   possible to learn seamless spatio-temporal feature
+                   extractors from video while leveraging successful ImageNet
+                   architecture designs and even their parameters. We show
+                   that, after pre-training on Kinetics, I3D models
+                   considerably improve upon the state-of-the-art in action
+                   classification, reaching 80.9\% on HMDB-51 and 98.0\% on
+                   UCF-101.",
+  month         =  may,
+  year          =  2017,
+  url           = "http://arxiv.org/abs/1705.07750",
+  archivePrefix = "arXiv",
+  eprint        = "1705.07750",
+  primaryClass  = "cs.CV",
+  arxivid       = "1705.07750"
+}
+
+@INPROCEEDINGS{Elhamifar2019-pi,
+  title      = "Unsupervised Procedure Learning via Joint Dynamic Summarization",
+  author     = "Elhamifar, Ehsan and Naing, Zwe",
+  year       =  2019,
+  url        = "http://dx.doi.org/10.1109/iccv.2019.00644",
+  conference = "2019 IEEE/CVF International Conference on Computer Vision
+                (ICCV)",
+  doi        = "10.1109/iccv.2019.00644"
+}
+
+@INPROCEEDINGS{Feichtenhofer2018-nc,
+  title     = "{SlowFast} Networks for Video Recognition",
+  booktitle = "{IEEE/CVF} International Conference on Computer Vision ({ICCV})",
+  author    = "Feichtenhofer, Christoph and Fan, Haoqi and Malik, Jitendra and
+               He, Kaiming",
+  abstract  = "We present SlowFast networks for video recognition. Our model
+               involves (i) a Slow pathway, operating at low frame rate, to
+               capture spatial semantics, and (ii) a Fast pathway, operating at
+               high frame rate, to capture motion at fine temporal resolution.
+               The Fast pathway can be made very lightweight by reducing its
+               channel capacity, yet can learn useful temporal information for
+               video recognition. Our models achieve strong performance for
+               both action classification and detection in video, and large
+               improvements are pin-pointed as contributions by our SlowFast
+               concept. We report state-of-the-art accuracy on major video
+               recognition benchmarks, Kinetics, Charades and AVA. Code has
+               been made available at:
+               https://github.com/facebookresearch/SlowFast",
+  pages     = "6202--6211",
+  month     =  dec,
+  year      =  2018,
+  url       = "http://arxiv.org/abs/1812.03982"
+}
+
+@ARTICLE{Zhao2020-yl,
+  title    = "{Universal-to-Specific} Framework for Complex Action Recognition",
+  author   = "Zhao, Peisen and Xie, Lingxi and Zhang, Ya and Tian, Qi",
+  abstract = "Video-based action recognition has recently attracted much
+              attention in the field of computer vision. To solve more complex
+              recognition tasks, it has become necessary to distinguish
+              different levels of interclass variations. Inspired by a common
+              flowchart based on the human decision-making process that first
+              narrows down the probable classes and then applies a
+              ``rethinking'' process for finer-level recognition, we propose an
+              effective universal-to-specific (U2S) framework for complex
+              action recognition. The U2S framework is composed of three
+              subnetworks: a universal network, a category-specific network,
+              and a mask network. The universal network first learns universal
+              feature representations. The mask network then generates
+              attention masks for confusing classes through category
+              regularization based on the output of the universal network. The
+              mask is further used to guide the category-specific network for
+              class-specific feature representations. The entire framework is
+              optimized in an end-to-end manner. Experiments on a variety of
+              benchmark datasets, e.g., the Something-Something, UCF101, and
+              HMDB51 datasets, demonstrate the effectiveness of the U2S
+              framework; i.e., U2S can focus on discriminative spatiotemporal
+              regions for confusing categories. We further visualize the
+              relationship between different classes, showing that U2S indeed
+              improves the discriminability of learned features. Moreover, the
+              proposed U2S model is a general framework and may adopt any base
+              recognition network.",
+  journal  = "IEEE Transactions on Multimedia",
+  year     =  2020,
+  url      = "http://dx.doi.org/10.1109/TMM.2020.3025665",
+  keywords = "Convolution;Three-dimensional displays;Task analysis;Feature
+              extraction;Manganese;Solid modeling;Action recognition;feature
+              representation;neural networks",
+  issn     = "1941-0077",
+  doi      = "10.1109/TMM.2020.3025665"
+}
+
+@INPROCEEDINGS{Zhou2018-qz,
+  title     = "Towards Automatic Learning of Procedures From Web Instructional
+               Videos",
+  booktitle = "{Thirty-Second} {AAAI} Conference on Artificial Intelligence",
+  author    = "Zhou, Luowei and Xu, Chenliang and Corso, Jason J",
+  abstract  = "The potential for agents, whether embodied or software, to learn
+               by observing other agents performing procedures involving
+               objects and actions is rich. Current research on automatic
+               procedure learning heavily relies on action labels or video
+               subtitles, even during the evaluation phase, which makes them
+               infeasible in real-world scenarios. This leads to our question:
+               can the human-consensus structure of a procedure be learned from
+               a large set of long, unconstrained videos (e.g., instructional
+               videos from YouTube) with only visual evidence? To answer this
+               question, we introduce the problem of procedure
+               segmentation---to segment a video procedure into
+               category-independent procedure segments. Given that no
+               large-scale dataset is available for this problem, we collect a
+               large-scale procedure segmentation dataset with procedure
+               segments temporally localized and described; we use cooking
+               videos and name the dataset YouCook2. We propose a segment-level
+               recurrent network for generating procedure segments by modeling
+               the dependencies across segments. The generated segments can be
+               used as pre-processing for other tasks, such as dense video
+               captioning and event parsing. We show in our experiments that
+               the proposed model outperforms competitive baselines in
+               procedure segmentation.",
+  month     =  apr,
+  year      =  2018,
+  url       = "https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/viewPaper/17344",
+  language  = "en"
+}
+
+
+@ARTICLE{Damen2020-az,
+  title         = "Rescaling Egocentric Vision: Collection, Pipeline and
+                   Challenges for {EPIC-KITCHENS-100}",
+  author        = "{Damen, Dima and Doughty, Hazel and Farinella, Giovanni
+                   Maria and Furnari, Antonino and Ma, Jian and Kazakos,
+                   Evangelos and Moltisanti, Davide and Munro, Jonathan and
+                   Perrett, Toby and Price, Will and Wray, Michael}",
+  abstract      = "This paper introduces the pipeline to extend the largest
+                   dataset in egocentric vision, EPIC-KITCHENS. The effort
+                   culminates in EPIC-KITCHENS-100, a collection of 100 hours,
+                   20M frames, 90K actions in 700 variable-length videos,
+                   capturing long-term unscripted activities in 45
+                   environments, using head-mounted cameras. Compared to its
+                   previous version, EPIC-KITCHENS-100 has been annotated using
+                   a novel pipeline that allows denser (54\% more actions per
+                   minute) and more complete annotations of fine-grained
+                   actions (+128\% more action segments). This collection
+                   enables new challenges such as action detection and
+                   evaluating the ``test of time'' - i.e. whether models
+                   trained on data collected in 2018 can generalise to new
+                   footage collected two years later. The dataset is aligned
+                   with 6 challenges: action recognition (full and weak
+                   supervision), action detection, action anticipation,
+                   cross-modal retrieval (from captions), as well as
+                   unsupervised domain adaptation for action recognition. For
+                   each challenge, we define the task, provide baselines and
+                   evaluation metrics",
+  journal       = "International journal of computer vision",
+  month         =  jun,
+  year          =  2020,
+  archivePrefix = "arXiv",
+  eprint        = "2006.13256",
+  primaryClass  = "cs.CV",
+  issn          = "0920-5691",
+  arxivid       = "2006.13256",
+  doi           = "10.1007/s11263-021-01531-2"
+}
+
+@INPROCEEDINGS{Elhamifar2020-xz,
+  title     = "Self-supervised Multi-task Procedure Learning from Instructional
+               Videos",
+  booktitle = "Computer Vision -- {ECCV} 2020",
+  author    = "Elhamifar, Ehsan and Huynh, Dat",
+  abstract  = "We address the problem of unsupervised procedure learning from
+               instructional videos of multiple tasks using Deep Neural
+               Networks (DNNs). Unlike existing works, we assume that training
+               videos come from multiple tasks without key-step annotations or
+               grammars, and the goals are to classify a test video to the
+               underlying task and to localize its key-steps. Our DNN learns
+               task-dependent attention features from informative regions of
+               each frame without ground-truth bounding boxes and learns to
+               discover and localize key-steps without key-step annotations by
+               using an unsupervised subset selection module as a teacher. It
+               also learns to classify an input video using the discovered
+               key-steps using a learnable key-step feature pooling mechanism
+               that extracts and learns to combine key-step based features for
+               task recognition. By experiments on two instructional video
+               datasets, we show the effectiveness of our method for
+               unsupervised localization of procedure steps and video
+               classification.",
+  publisher = "Springer International Publishing",
+  pages     = "557--573",
+  year      =  2020,
+  url       = "http://dx.doi.org/10.1007/978-3-030-58520-4_33",
+  doi       = "10.1007/978-3-030-58520-4\_33"
+}
+
+
+@PHDTHESIS{Bakr2020-cf,
+  title    = "Recognition and Modeling of Manipulation Actions",
+  author   = "Bakr, Nachwa Abou",
+  editor   = "Crowley, James",
+  year     =  2020,
+  url      = "https://tel.archives-ouvertes.fr/tel-02986815/document",
+  school   = "Universit{\'e} Grenoble-Alpes"
+}
+
+@INPROCEEDINGS{Hussein2019-to,
+  title     = "Timeception for Complex Action Recognition",
+  booktitle = "2019 {IEEE/CVF} Conference on Computer Vision and Pattern
+               Recognition ({CVPR})",
+  author    = "Hussein, Noureldien and Gavves, Efstratios and Smeulders, Arnold
+               W M",
+  abstract  = "This paper focuses on the temporal aspect for recognizing human
+               activities in videos; an important visual cue that has long been
+               undervalued. We revisit the conventional definition of activity
+               and restrict it to Complex Action: a set of one-actions with a
+               weak temporal pattern that serves a specific purpose. Related
+               works use spatiotemporal 3D convolutions with fixed kernel size,
+               too rigid to capture the varieties in temporal extents of
+               complex actions, and too short for long-range temporal modeling.
+               In contrast, we use multi-scale temporal convolutions, and we
+               reduce the complexity of 3D convolutions. The outcome is
+               Timeception convolution layers, which reasons about minute-long
+               temporal patterns, a factor of 8 longer than best related works.
+               As a result, Timeception achieves impressive accuracy in
+               recognizing the human activities of Charades, Breakfast Actions
+               and MultiTHUMOS. Further, we demonstrate that Timeception learns
+               long-range temporal dependencies and tolerate temporal extents
+               of complex actions.",
+  pages     = "254--263",
+  month     =  jun,
+  year      =  2019,
+  url       = "http://dx.doi.org/10.1109/CVPR.2019.00034",
+  keywords  = "Action Recognition;Video Analytics",
+  issn      = "2575-7075",
+  doi       = "10.1109/CVPR.2019.00034"
+}
+
+
+@ARTICLE{Li2021-mf,
+  title         = "{Ego-Exo}: Transferring Visual Representations from
+                   Third-person to First-person Videos",
+  author        = "Li, Yanghao and Nagarajan, Tushar and Xiong, Bo and Grauman,
+                   Kristen",
+  abstract      = "We introduce an approach for pre-training egocentric video
+                   models using large-scale third-person video datasets.
+                   Learning from purely egocentric data is limited by low
+                   dataset scale and diversity, while using purely exocentric
+                   (third-person) data introduces a large domain mismatch. Our
+                   idea is to discover latent signals in third-person video
+                   that are predictive of key egocentric-specific properties.
+                   Incorporating these signals as knowledge distillation losses
+                   during pre-training results in models that benefit from both
+                   the scale and diversity of third-person video data, as well
+                   as representations that capture salient egocentric
+                   properties. Our experiments show that our Ego-Exo framework
+                   can be seamlessly integrated into standard video models; it
+                   outperforms all baselines when fine-tuned for egocentric
+                   activity recognition, achieving state-of-the-art results on
+                   Charades-Ego and EPIC-Kitchens-100.",
+  month         =  apr,
+  year          =  2021,
+  url           = "http://arxiv.org/abs/2104.07905",
+  copyright     = "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+  archivePrefix = "arXiv",
+  eprint        = "2104.07905",
+  primaryClass  = "cs.CV",
+  arxivid       = "2104.07905"
+}
+
+@ARTICLE{Wang2021-wk,
+  title         = "{SSCAP}: Self-supervised Co-occurrence Action Parsing for
+                   Unsupervised Temporal Action Segmentation",
+  author        = "Wang, Zhe and Chen, Hao and Li, Xinyu and Liu, Chunhui and
+                   Xiong, Yuanjun and Tighe, Joseph and Fowlkes, Charless",
+  abstract      = "Temporal action segmentation is a task to classify each
+                   frame in the video with an action label. However, it is
+                   quite expensive to annotate every frame in a large corpus of
+                   videos to construct a comprehensive supervised training
+                   dataset. Thus in this work we propose an unsupervised
+                   method, namely SSCAP, that operates on a corpus of unlabeled
+                   videos and predicts a likely set of temporal segments across
+                   the videos. SSCAP leverages Self-Supervised learning to
+                   extract distinguishable features and then applies a novel
+                   Co-occurrence Action Parsing algorithm to not only capture
+                   the correlation among sub-actions underlying the structure
+                   of activities, but also estimate the temporal path of the
+                   sub-actions in an accurate and general way. We evaluate on
+                   both classic datasets (Breakfast, 50Salads) and the emerging
+                   fine-grained action dataset (FineGym) with more complex
+                   activity structures and similar sub-actions. Results show
+                   that SSCAP achieves state-of-the-art performance on all
+                   datasets and can even outperform some weakly-supervised
+                   approaches, demonstrating its effectiveness and
+                   generalizability.",
+  month         =  may,
+  year          =  2021,
+  url           = "http://arxiv.org/abs/2105.14158",
+  archivePrefix = "arXiv",
+  eprint        = "2105.14158",
+  primaryClass  = "cs.CV",
+  arxivid       = "2105.14158"
+}
+
+@ARTICLE{Sigurdsson2018-gk,
+  title         = "Actor and Observer: Joint Modeling of First and
+                   {Third-Person} Videos",
+  author        = "Sigurdsson, Gunnar A and Gupta, Abhinav and Schmid, Cordelia
+                   and Farhadi, Ali and Alahari, Karteek",
+  abstract      = "Several theories in cognitive neuroscience suggest that when
+                   people interact with the world, or simulate interactions,
+                   they do so from a first-person egocentric perspective, and
+                   seamlessly transfer knowledge between third-person
+                   (observer) and first-person (actor). Despite this, learning
+                   such models for human action recognition has not been
+                   achievable due to the lack of data. This paper takes a step
+                   in this direction, with the introduction of Charades-Ego, a
+                   large-scale dataset of paired first-person and third-person
+                   videos, involving 112 people, with 4000 paired videos. This
+                   enables learning the link between the two, actor and
+                   observer perspectives. Thereby, we address one of the
+                   biggest bottlenecks facing egocentric vision research,
+                   providing a link from first-person to the abundant
+                   third-person data on the web. We use this data to learn a
+                   joint representation of first and third-person videos, with
+                   only weak supervision, and show its effectiveness for
+                   transferring knowledge from the third-person to the
+                   first-person domain.",
+  month         =  apr,
+  year          =  2018,
+  url           = "http://arxiv.org/abs/1804.09627",
+  archivePrefix = "arXiv",
+  eprint        = "1804.09627",
+  primaryClass  = "cs.CV",
+  arxivid       = "1804.09627"
+}

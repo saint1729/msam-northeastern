@@ -1,0 +1,21 @@
+folder_path:
+  username: "sakshisuman12"
+  prefix: "/Users/"
+  postfix: "/Desktop/MATH7243_project/unzipped/XN_project/"
+  label_file: "hemorrhage-labels.csv"
+  data_folder: "/renders/"
+
+classes:
+  - intraventricular
+  - intraparenchymal
+  - epidural
+  - subdural
+  - subarachnoid
+  - multi
+  - normal
+
+shades:
+  - brain_bone_window
+  - brain_window
+  - max_contrast_window
+  - subdural_window

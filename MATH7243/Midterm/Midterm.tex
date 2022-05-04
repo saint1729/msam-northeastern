@@ -1,0 +1,394 @@
+\documentclass[11pt]{paper}
+\setlength{\oddsidemargin}{0.1 in}
+\setlength{\evensidemargin}{0.1 in}
+\setlength{\topmargin}{-0.3 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.25 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+\usepackage{amsmath,amsthm,amscd,amssymb}
+\usepackage{mathexam}
+\usepackage[all]{xy} 
+\usepackage{graphicx,calrsfs,verbatim} 
+\usepackage[colorlinks,plainpages,backref,urlcolor=blue]{hyperref}
+\usepackage{bbm}
+\usepackage{fancyheadings}
+\usepackage{mathrsfs}
+\usepackage{xstring}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing,calc,shapes}
+\usepackage{array}
+\usepackage{tcolorbox}
+
+\theoremstyle{definition}
+ \newtheorem{theorem}{Theorem} 
+\newtheorem{Question}[theorem]{ }
+
+\newcommand{\Sol}[1]{
+\begin{tcolorbox}[colback=white!5!white,colframe=white!70!green,fontupper=\color{blue},title=]
+\normalsize #1 \end{tcolorbox}  }
+
+
+\newcommand{\Red}{}
+\newcommand{\red}{\textcolor{red}}
+
+
+\newcommand{\Qu}[1]{
+\begin{Question}
+#1
+\end{Question}
+\vspace{-0.5cm}
+}
+
+\newcommand{\Comment}[1]{
+}
+
+\textwidth=18cm \textheight=23cm
+%\voffset=-0.3in
+\hoffset=-0.4in
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\kk}{\mathbbm{k}}
+\newcommand{\mm}{\mathbbm{m}}
+ 
+
+\newcommand{\va}{\vec{a}}
+\newcommand{\vb}{\vec{b}}
+\newcommand{\vc}{\vec{c}}
+\newcommand{\vd}{\vec{d}}
+\newcommand{\vh}{\vec{h}}
+\newcommand{\e}{\vec{e}}
+\newcommand{\vi}{\vec{i}}
+\newcommand{\vj}{\vec{j}}
+\newcommand{\vk}{\vec{k}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vr}{\vec{r}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\Span}{\mathrm{Span}}
+\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\green}{\textcolor{green}}
+\newcommand{\ifif}{\textcolor{blue}{ if and only if }} 
+
+\newcommand{\rref}{\textbf{rref}}
+\newcommand{\ef}{\textbf{ref}}
+
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}} 
+
+\newcommand{\vvv}[1]{\langle #1 \rangle}
+
+\newcommand{\definition}{\textbf{Definition.~}}
+\newcommand{\thm}{\textbf{Theorem.~}}
+\newcommand{\que}{\textbf{Question.~}}
+\newcommand{\prop}{\textbf{Proposition.~}}
+\newcommand{\ex}{\textbf{Example.~}}
+\newcommand{\cor}{\textbf{Corollary.~}}
+
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\coker}{coker}
+ \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Nul}{\mathrm{Nul}}
+\DeclareMathOperator{\Co}{\mathrm{Col}}
+\DeclareMathOperator{\Ro}{\mathrm{Ro}}
+\DeclareMathOperator{\Ker}{\mathrm{Ker}}
+\DeclareMathOperator{\Ima}{\mathrm{Im}}
+\DeclareMathOperator{\dist}{\mathrm{dist}}
+\DeclareMathOperator{\proj}{\mathrm{proj}}
+\DeclareMathOperator{\comp}{\mathrm{comp}}
+
+\pagestyle{fancy}
+
+\chead{\textbf{ Test 1   }}
+\lhead{Math 2331--Fall 2020}
+\rhead{   }
+
+
+\begin{document}
+ 
+
+\textbf{Math 7243 Machine Learning - Fall 2022}
+
+\textbf{Instructor: He Wang}
+
+\textbf{Midterm }
+
+\
+
+
+ \textbf{Student Name: \underline{\hspace{4cm}}}
+\hfill
+ \textbf{  \underline{\hspace{2cm}}/50}
+ 
+ \ \\
+ 
+ \textbf{Rules and Instructions for Exams: }
+\ExamInstrBox{ 
+1. Unless otherwise specified, to receive full credits you must show  {\textbf{all}} necessary work. The grading is based on your work shown. Only a final result from computer will receive zero point. 
+
+\
+
+2. You need to finish the exam yourself. Any discussions  with the other people will be considered as \textbf{academic dishonesty}.  \textbf{Cheating, Unauthorized Collaboration, and Facilitating Academic Dishonesty are not allowed.} You can read a description of each here \url{http://www.northeastern.edu/osccr/academic-integrity-policy/}
+
+\
+
+3. This is an open exam. You are allowed to look at textbooks, and use a computer.\\
+
+
+4.  You are \textbf{not} allowed to discuss with any other people.  \\
+
+5.  You are \textbf{not} allowed to ask questions on any internet platform.  \\
+
+
+6. For programming questions, if there is no specific instruction, you can only use \textbf{numpy},  \textbf{matplotlib} library.  
+You should \textbf{not} use any build in function from Scikit-learn or StatsModels libraries. \\
+
+7.  \textbf{Submit your codes for all questions if you used python.}
+For your \textbf{Python coding and graphing submissions}, you can either paste the images of the key codes along your solutions in pdf file, or submit a separate .\textbf{html} file.
+
+}
+
+
+
+
+
+\vspace{0.1cm}
+
+ 
+ 
+
+
+\newpage
+\setcounter{page}{1}
+
+\pagestyle{plain} 
+
+ 
+
+\Qu{(10 points)
+Calculate the \textbf{gradient} and \textbf{Hessian} \textbf{matrix} of the following functions 
+and find the $\textbf{argmin}_\theta$ of each function. 
+Here the norm $||~ ~ ||$ is the standard $l_2$-norm. You can use any results in the lecture notes.
+}
+
+\
+
+(1) Let  $A \in \R^{n\times n}$ be a symmetric matrix, and $\vb \in \R^n$. Suppose $A+3I$ is positive definitive.
+
+Let $J(\vec{\theta})=\vec{\theta}^TA\vec{\theta}-  2\vb^T  \vec{\theta}+3  \vec{\theta}^T \vec{\theta} +||A\vb||$.
+ 
+\vfill
+
+(2)
+ Let $J(\vec{\theta})= \theta_1^2+4\theta_1\theta_2 +5\theta_2^2 -4\theta_1-6\theta_2+10$
+
+ 
+\vfill
+
+
+
+\newpage
+
+ 
+
+\Qu{ (10 points) In this question, you may use Python (with only numpy library) to solve
+the matrix equation.
+Consider the following data points
+
+
+ \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c} \hline
+ $x_1 $   &  $x_2 $   &  $y $      \\ \hline
+ 1  &   2.1   &    2.3   \\  \hline
+ 2   &  4.1    &   4.3   \\ \hline
+ 3  &   5.9    &   6.3   \\ \hline
+ 4  &  8.2    &   7.8  \\ \hline
+ 5   &  9.9   &  9.8   \\ \hline
+\end{tabular}
+
+a). Fit a linear model $y=\theta_0+\theta_1 x_1 +\theta_2x_2$ to this dataset when the loss is RSS$=||X\vec\theta-\vy||^2$. 
+You should report the best fit function and the RSS cost value. Plot the data and model.
+
+\vfill
+ 
+b). Fit a linear function to this dataset when the loss is the Ridge Loss $J(\theta)=||X\vec\theta-\vy||^2+\lambda(\theta_1^2+\theta_2^2)$  with $\lambda=1$
+and with $\lambda=10$.  You should report the best fit function and the \textbf{RSS} cost value.  Plot the data and model. (Hint: Do not put penalty on $\theta_0$. You don't have to standardize the data, but you need to centralize the data. ) 
+}
+
+ 
+\vfill
+
+
+
+
+
+\newpage
+
+
+ 
+ \Qu{ (10 points)
+ Consider the data 
+  \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
+ $x^{(i)}$   &  0 &  0.2&  0.4& 0.6&  0.8& 1&  1.2 & 1.4 \\ \hline
+ $y^{(i)}$  &  5.1  & 6.4& 6.1 & 8.2& 9.5  &  8.6  & 12 & 14.8\\
+\end{tabular}
+ 
+The  data file $\{ \vx^{(i)}, y^{(i)} \}$ for $i=1,2,...,n=8$  is drawn (with noise) from
+ $$f(x)=\theta_0+\theta_1 x+\theta_2 e^x $$
+
+}
+
+ (1) Find a \textbf{closed formula} for parameters $\vec\theta$ to minimize the RSS loss
+ $$J(\vec\theta)=\sum_{i=1}^n \big(y^{(i)}-f(x^{(i)})\big)^2 $$
+  
+
+ \vfill
+
+ 
+
+(2)  Using formula in (1),
+\textbf{find the function} $f(x)$ fitting the data.
+ 
+  \vfill
+ 
+(3) Calculate the cost for your fitting in (2). 
+ 
+   \vfill
+ 
+ \newpage
+
+ 
+  
+  
+  
+   
+ 
+\Qu{ (10 points) Consider the categorical learning problem consisting of a data set with two labels.
+ 
+ 
+ 
+ \textbf{Label 1: } (contains 5 data  points)
+ 
+ 
+\begin{tabular}{c|c|c|c|c|c|c|c}
+ $X_1$   & -0.6 &    0 &0.2 &-0.8 &-0.3 \\ \hline
+ $X_2$   &  -2&  -2  &-1 & -1 & 0 \\
+\end{tabular} 
+ 
+ 
+\textbf{Label 0: } (contains 6 data  points)
+ 
+\begin{tabular}{c|c|c|c|c|c|c|c}
+ $X_1$    & 0.5  & 1 &1.5 & 1.5 & 1  & 0.5     \\ \hline
+ $X_2$    &  2.5 & 1  & 1.5 & 2.5 &3   &1.5  \\
+\end{tabular}
+ 
+  
+ }
+ 
+Answer the following logistics regression questions.  
+
+ 
+ 
+  
+\textbf{(1)} Use \textbf{gradient descent} to find the \textbf{logistic} \textbf{regression} model   $$p(Y=1 | \vx )=\dfrac{1}{1+e^{-\theta^T \vx}} $$ and the boundary.  (Plot the data and boundary, only use numpy  and Matplotlib. )  Use initial value $\vec{\theta}_0=\vec{0}$,  learning rate $\alpha=0.02$, and   $1000$ iterations, 
+
+ \vfill
+ 
+ 
+\textbf{(2)} Find the probability $P(y=1 | \vx_t)$ for a test point $\vx_t=\begin{bmatrix}
+0\\
+0
+\end{bmatrix}
+$ for your logistic model in (1). What is the predicted label for $\vx_t$?
+ 
+\vfill
+
+
+
+%\textbf{(3)} (1 bonus points)
+% Apply \textbf{Newton's method} to find the logistic regression model. 
+% Use initial value $\vec{\theta}_0=\vec{0}$,  learning rate $\alpha=0.02$, and   $1000$ iterations.
+ 
+ (3)   Find \textbf{quadratic} Logistics Regression method for this question and obtain an quadratic boundary.   (Hint: this means to use new features:  $X_1$,  $X_2$,  $X_1^2$, $X_1X_2$, $X_2^2$.)
+ 
+ 
+\vfill
+ 
+ \newpage
+
+
+ 
+\Qu{(10 points) Consider the categorical learning problem consisting of a data set with two labels:
+ 
+ 
+ 
+ \textbf{Label 1: } (contains 5 data  points)
+ 
+ 
+\begin{tabular}{c|c|c|c|c|c|c|c}
+ $X_1$   & -0.6 &    0 &0.2 &-0.8 &-0.3 \\ \hline
+ $X_2$   &  -2&  -2  &-1 & -1 & 0 \\
+\end{tabular} 
+ 
+ 
+\textbf{Label 2: } (contains 6 data  points)
+ 
+\begin{tabular}{c|c|c|c|c|c|c|c}
+ $X_1$    & 0.5  & 1 &1.5 & 1.5 & 1  & 0.5     \\ \hline
+ $X_2$    &  2.5 & 1  & 1.5 & 2.5 &3   &1.5  \\
+\end{tabular}
+ 
+  
+ }
+ 
+ 
+ 
+   
+  
+\textbf{ (1)}   For each label above, the data follow a multivariate normal distribution $\textrm{Normal} (\mu_i, \Sigma)$  where the covariance $\Sigma$ is the same for both labels. Fit a pair of LDA functions to the labels by computing the covariances  $\Sigma$, means $\mu_i$, and proportion $\phi$ of data. You may use Python (with only numpy library)
+ 
+~~~ (a) You should report the values for $\phi$, $\mu_i$ and $\Sigma$.  
+ 
+\vfill
+  
+~~~ (b) Give the \textbf{formula for the line} forming the decision boundary and plot the \textbf{graph}.  (Write done the formula used in your calculation.)
+ 
+ 
+ 
+\vfill
+ 
+ 
+\textbf{(2)} Find the probability $P(y=1 | \vx)$ for a test point $\vx=\begin{bmatrix}
+0\\
+0
+\end{bmatrix}
+$ for the LDA model.
+
+\vfill
+
+ 
+
+\textbf{(3) }(2 bonus points) Find the quadratic boundary using the QDA method and plot the graph.    (You can use Sympy lib to simplify the formula.)
+
+ \vfill
+ 
+\end{document}
+  
+  
+   
+ 
+
